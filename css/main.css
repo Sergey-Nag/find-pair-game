@@ -1,0 +1,253 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 18px;
+}
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  background: #d1f2ff;
+  height: 100%;
+}
+
+.wrapper {
+  width: 50vw;
+  /*  height: 92vh;*/
+  margin: 20px auto;
+}
+
+.wrapper.full {
+  width: 95vw;
+}
+
+.d-grid {
+  display: grid;
+  width: 100%;
+  height: 100%;
+}
+
+.d-grid.log {
+  margin-top: calc(50% - 15vh);
+  grid-template-columns: 1fr;
+  grid-template-rows: 30vh 50px auto;
+  grid-gap: 15px;
+}
+
+.d-grid.game {
+  display: none;
+  opacity: 0;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 93vh;
+  grid-gap: 15px;
+}
+
+.d-grid.butts {
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 15px;
+}
+
+.card {
+  background: #f2f2f2;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px rgba(63, 39, 252, 0.3);
+}
+
+.header {
+  padding: 35px 50px 50px;
+}
+
+.card h2 {
+  font-weight: normal;
+  font-size: 1.8rem;
+}
+
+.field {
+  background: none;
+  margin-top: 5px;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+}
+
+.field:focus {
+  box-shadow: 0 0 10px rgba(0, 20, 255, 0.8);
+}
+
+.field.inp {
+  background: #fcfbfc;
+  width: 100%;
+  font-size: 1.4rem;
+  padding: 5px;
+  color: rgb(25, 38, 183);
+}
+
+.field.inp.error {
+  background: #e3e3e3;
+  color: red;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+}
+
+.field.butt {
+  display: block;
+  width: 150px;
+  font-size: 1.3rem;
+  text-transform: lowercase;
+  padding: 5px;
+  margin: 13px auto 0;
+  background: #68c9e8;
+  color: white;
+  cursor: pointer;
+}
+
+.field.butt:disabled {
+  cursor: default;
+  background: #addfef;
+}
+
+.field.butt:not(:disabled):hover {
+  background: #7cdfff;
+}
+
+.card.b {
+  text-align: center;
+  line-height: 2.6rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.card.b:hover {
+  background: #e1eff2;
+}
+
+.card.b.active {
+  border: solid 2px #52d3ff;
+  background: #e1eff2;
+  font-weight: bold;
+  line-height: 2.5rem;
+  font-size: 1.3rem;
+}
+
+.leaders .h-wrapp,
+.leaders .b-wrapp {
+  border-bottom: solid 2px #d1d1d1;
+  padding: 20px 50px;
+}
+
+.leaders h2 {
+  text-align: center;
+}
+
+.lead {
+  width: 100%;
+}
+
+.lead .first {
+  width: 25px;
+  color: #585858;
+}
+
+.lead .last {
+  text-align: right;
+  width: 50px;
+}
+
+.layer.l-9 {
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-gap: 10px;
+}
+
+.wrapp-3D {
+  perspective: 1000px;
+  perspective-origin: center center;
+  transition: all .6s cubic-bezier(0, .31, .27, 1.8);
+  transform: scale(.8);
+  opacity: 0;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  z-index: 10;
+}
+
+.wrapp-3D.hide {
+  cursor: default;
+}
+
+.wrapp-3D.hide .card {
+  transform: scale(.1);
+  opacity: 0;
+  overflow: hidden;
+}
+
+.wrapp-3D.hide .backface {
+  display: none;
+}
+
+.card.flip,
+.backface {
+  position: absolute;
+  transition: all .6s ease;
+  backface-visibility: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.card.flip {
+  transform: rotateY(0deg);
+  padding-top: 35px;
+}
+
+.backface {
+  transform: rotateY(0deg);
+  background: linear-gradient(45deg, #74eaf4 20%, #8e8eef 80%);
+}
+
+.backface.flipped {
+  transform: rotateY(-180deg);
+}
+
+
+.card.flip.flipped,
+.card.flip.flipped:hover {
+  transform: rotateY(180deg);
+}
+
+
+.card.none {
+  background: #c6e6fe;
+}
+
+.card img {
+  display: block;
+  margin: 0 auto;
+  height: 70%;
+}
+
+.popup {
+    display: none;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 200;
+  margin-top: -20px;
+  transition: all .5s ease;
+}
+
+#message {
+  background: white;
+  display: block;
+  margin: calc(50vh - 55px) auto 0;
+  width: 50vw;
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 25px;
+  border-radius: 5px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: all 2s ease;
+}
