@@ -31,9 +31,9 @@ body {
 }
 
 .d-grid.log {
-  margin-top: calc(50% - 15vh);
+  margin-top: calc(50% - 105px);
   grid-template-columns: 1fr;
-  grid-template-rows: 30vh 50px auto;
+  grid-template-rows: 210px auto;
   grid-gap: 15px;
 }
 

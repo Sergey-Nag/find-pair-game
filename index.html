@@ -1,82 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>N x N game</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>N x N game</title>
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
-  <link rel="stylesheet" href="css/main.css">
-</head>
-
-<body>
-  <div class="popup">
-    <span id="message">...</span>
-  </div>
-  <div class="wrapper">
-    <div class="d-grid log">
-      <div class="card header">
-        <h2>Ваше имя:</h2>
-        <form id="name">
-          <input type="text" onkeyup="checkVal(this)" class="field inp" placeholder="..." name="username">
-          <input type="submit" class="field butt" value="Играть" disabled>
-        </form>
-      </div>
-      <div class="d-grid butts">
-        <div class="card b active" data-layer="9" onclick="setLayer(this)"><span>9x9</span></div>
-        <div class="card b" data-layer="16" onclick="setLayer(this)"><span>16x16</span></div>
-        <div class="card b" data-layer="25" onclick="setLayer(this)"><span>25x25</span></div>
-
-      </div>
-      <div class="card leaders">
-        <div class="h-wrapp">
-          <h2>Лидеры:</h2>
-        </div>
-        <div class="b-wrapp">
-          <table class="lead">
-            <tr>
-              <td class="first">1.</td>
-              <td>NAME</td>
-              <td class="last">00:15</td>
-            </tr>
-            <tr>
-              <td class="first">2.</td>
-              <td>asdf</td>
-              <td class="last">01:18</td>
-            </tr>
-            <tr>
-              <td class="first">3.</td>
-              <td>SERG-N</td>
-              <td class="last">03:28</td>
-            </tr>
-          </table>
-        </div>
-      </div>
+  <body>
+    <div class="popup">
+      <span id="message">...</span>
     </div>
+    <div class="wrapper">
+      <div class="d-grid log">
+        <div class="card header">
+          <h2>Ваше имя:</h2>
+          <form id="username">
+            <input
+              id="username-input"
+              type="text"
+              class="field inp"
+              placeholder="..."
+              name="username"
+            />
+            <input id="username-submit" type="submit" class="field butt" value="Играть" disabled />
+          </form>
+        </div>
 
-    <div id="game" class="d-grid game">
-      <div class="card-wrapp">
-        <div class="card">
+        <div class="card leaders">
           <div class="h-wrapp">
             <h2>Лидеры:</h2>
           </div>
-          <div class="h-body">
+          <div class="b-wrapp">
+            <table class="lead">
+              <tr>
+                <td class="first">1.</td>
+                <td>NAME</td>
+                <td class="last">00:15</td>
+              </tr>
+              <tr>
+                <td class="first">2.</td>
+                <td>asdf</td>
+                <td class="last">01:18</td>
+              </tr>
+              <tr>
+                <td class="first">3.</td>
+                <td>SERG-N</td>
+                <td class="last">03:28</td>
+              </tr>
+            </table>
           </div>
         </div>
       </div>
-      <div class="card-wrapp">
-        <div id="gameLayer" class="d-grid layer l-9">
-          ...
+
+      <div id="game" class="d-grid game">
+        <div class="card-wrapp">
+          <div class="card">
+            <div class="h-wrapp">
+              <h2>Лидеры:</h2>
+            </div>
+            <div class="h-body"></div>
+          </div>
+        </div>
+        <div class="card-wrapp">
+          <div id="gameLayer" class="d-grid layer l-9">...</div>
+        </div>
+        <div class="card-wrapp">
+          <div class="card"></div>
         </div>
       </div>
-      <div class="card-wrapp">
-        <div class="card"></div>
-      </div>
     </div>
-  </div>
 
-  <script src="js/main.js"></script>
-</body>
-
+    <script src="js/main.js"></script>
+  </body>
 </html>
