@@ -1,0 +1,20 @@
+.leaderboard {
+  width: 100%;
+  line-height: 1.5;
+  border-spacing: 0;
+
+  &__head {
+
+    td {
+      padding-bottom: 5px;
+      border-bottom: solid 1px black;
+    }
+  }
+
+  &__body {
+
+    tr:first-child td {
+      padding-top: 7px;
+    }
+  }
+}
