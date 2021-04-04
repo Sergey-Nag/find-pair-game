@@ -36,8 +36,15 @@ function App() {
   ];
   return (
     <div className="App">
-      <h1>Hello</h1>
-      <Leaderboard leaders={leaders} />
+      <div
+        style={{
+          margin: '0 auto',
+          width: 900,
+          padding: '2em',
+        }}
+      >
+        <Leaderboard leaders={leaders} />
+      </div>
     </div>
   );
 }
