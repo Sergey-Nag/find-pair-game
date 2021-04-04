@@ -4,34 +4,34 @@ import Leaderboard from './components/Leaderboard';
 function App() {
   const leaders = [
     {
-      place: 1,
+      id: 1,
       nickname: 'Username',
-      time: '02:15',
+      time: 1327536135417,
     },
     {
-      place: 2,
-      nickname: 'user',
-      time: '02:20',
-    },
-    {
-      place: 3,
+      id: 3,
       nickname: 'nick',
-      time: '02:35',
+      time: 1327536265417,
     },
     {
-      place: 4,
+      id: 2,
+      nickname: 'user',
+      time: 1327536140417,
+    },
+    {
+      id: 4,
       nickname: 'nickName',
-      time: '02:41',
+      time: 1327536161417,
     },
     {
-      place: 5,
+      id: 5,
       nickname: '_nickname_123',
-      time: '02:57',
+      time: 1327536177417,
     },
     {
-      place: 6,
+      id: 6,
       nickname: 'asd',
-      time: '03:16',
+      time: 1327536196417,
     },
   ];
   return (

@@ -3,12 +3,23 @@
 .leaderboard {
   width: 100%;
   border-spacing: 0;
+  counter-reset: place;
 
 
-  &__row:first-child {
-    .leaderboard__col {
-      padding-top: 7px;
-      border-top: solid $leaderboard_header_padding white;
+  &__row {
+    
+    .leaderboard__col:first-child {
+      &::before {
+        counter-increment: place;
+        content: counter(place);
+      }
+    }
+  
+    &:first-child {
+      .leaderboard__col {
+        padding-top: 6px;
+        border-top: solid $leaderboard_header_padding white;
+      }
     }
   }
 
