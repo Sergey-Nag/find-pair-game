@@ -1,0 +1,50 @@
+@import '../../assets/scss/mixins';
+@import '../../assets/scss/variables';
+
+.gamelevel {
+  @extend %flex;
+  flex-direction: column;
+  max-width: 200px;
+
+  &__image {
+    width: 100%;
+    opacity: .5;
+    
+    &_active {
+      opacity: 1;
+    }
+  }
+
+  &__info {
+    width: 100%;
+
+    &_wrapp {
+      padding: {
+        top: $gamelevel_card_info_padding - 3px;
+        right: $gamelevel_card_info_padding;
+        left: $gamelevel_card_info_padding;
+      };
+    }
+  }
+
+  &__name {
+    @extend %inline-block;
+    text-transform: capitalize;
+    width: 60%;
+  }
+
+  &__time {
+    @extend %inline-block;
+    width: 40%;
+    text-align: right;
+  }
+
+  &__button {
+    width: 100%;
+    padding: 5px 0;
+
+    &_wrapp {
+      padding: $gamelevel_card_info_padding;
+    }
+  }
+}

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
+import GameLevelCard from './components/GameLevelCard';
 import Leaderboard from './components/Leaderboard';
 
 function App() {
@@ -34,6 +35,13 @@ function App() {
       time: 1327536196417,
     },
   ];
+
+  const [activeMode, setActiveMode] = useState('easy');
+
+  const activeLevel = useCallback((level) => {
+    setActiveMode(level);
+  }, []);
+
   return (
     <div className="App">
       <div
@@ -44,6 +52,29 @@ function App() {
         }}
       >
         <Leaderboard leaders={leaders} />
+      </div>
+      <div style={{
+        width: 900,
+        margin: '0 auto',
+        display: 'flex',
+        justifyContent: 'space-around',
+      }}
+      >
+        <GameLevelCard
+          level="easy"
+          onActive={activeLevel}
+          active={activeMode === 'easy'}
+        />
+        <GameLevelCard
+          level="medium"
+          onActive={activeLevel}
+          active={activeMode === 'medium'}
+        />
+        <GameLevelCard
+          level="hard"
+          onActive={activeLevel}
+          active={activeMode === 'hard'}
+        />
       </div>
     </div>
   );
