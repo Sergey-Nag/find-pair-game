@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.72b8536d.chunk.css",
-    "main.js": "/static/js/main.ed86d2c2.chunk.js",
-    "main.js.map": "/static/js/main.ed86d2c2.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.6bc933d7.js",
-    "runtime-main.js.map": "/static/js/runtime-main.6bc933d7.js.map",
-    "static/js/2.b6c63f1d.chunk.js": "/static/js/2.b6c63f1d.chunk.js",
-    "static/js/2.b6c63f1d.chunk.js.map": "/static/js/2.b6c63f1d.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/main.72b8536d.chunk.css.map": "/static/css/main.72b8536d.chunk.css.map",
-    "static/js/2.b6c63f1d.chunk.js.LICENSE.txt": "/static/js/2.b6c63f1d.chunk.js.LICENSE.txt"
+    "main.css": "/find-pair-game/static/css/main.72b8536d.chunk.css",
+    "main.js": "/find-pair-game/static/js/main.ed86d2c2.chunk.js",
+    "main.js.map": "/find-pair-game/static/js/main.ed86d2c2.chunk.js.map",
+    "runtime-main.js": "/find-pair-game/static/js/runtime-main.51db2732.js",
+    "runtime-main.js.map": "/find-pair-game/static/js/runtime-main.51db2732.js.map",
+    "static/js/2.b6c63f1d.chunk.js": "/find-pair-game/static/js/2.b6c63f1d.chunk.js",
+    "static/js/2.b6c63f1d.chunk.js.map": "/find-pair-game/static/js/2.b6c63f1d.chunk.js.map",
+    "index.html": "/find-pair-game/index.html",
+    "static/css/main.72b8536d.chunk.css.map": "/find-pair-game/static/css/main.72b8536d.chunk.css.map",
+    "static/js/2.b6c63f1d.chunk.js.LICENSE.txt": "/find-pair-game/static/js/2.b6c63f1d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.6bc933d7.js",
+    "static/js/runtime-main.51db2732.js",
     "static/js/2.b6c63f1d.chunk.js",
     "static/css/main.72b8536d.chunk.css",
     "static/js/main.ed86d2c2.chunk.js"
