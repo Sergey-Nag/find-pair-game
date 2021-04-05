@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './GameLevelCard.scss';
+
 import gameLevelData from '../../utils/gameLevelData';
 
 function GameLevelCard({ level, active, onActive }) {
