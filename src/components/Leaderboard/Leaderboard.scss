@@ -1,0 +1,58 @@
+@import '/src/assets/scss/_variables.scss';
+
+.leaderboard {
+  width: 100%;
+  border-spacing: 0;
+  counter-reset: place;
+
+
+  &__row {
+    
+    .leaderboard__col:first-child {
+      &::before {
+        counter-increment: place;
+        content: counter(place);
+      }
+    }
+  
+    &:first-child {
+      .leaderboard__col {
+        padding-top: 6px;
+        border-top: solid $leaderboard_header_padding white;
+      }
+    }
+  }
+
+  &__col {
+    padding: $leaderboard_col_paddings;
+
+    &_header {
+      padding-bottom: $leaderboard_header_padding;
+      border-bottom: solid 1px black;
+    }
+
+    &_width {
+      &_sm {
+        width: $leaderboard_col_width_sm;
+      }
+    }
+
+    &_text {
+      &_right {
+        text-align: right;
+      }
+    }
+  }
+
+  &__body {
+    .leaderboard__row:nth-child(1) {
+      background: $color_gold;
+    }
+    .leaderboard__row:nth-child(2) {
+      background: $color_silver;
+    }
+    .leaderboard__row:nth-child(3) {
+      background: $color_bronze;
+    }
+  }
+}

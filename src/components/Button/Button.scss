@@ -1,0 +1,116 @@
+.button {
+  margin: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  color: #fff;
+  min-width: 125px;
+  padding: 8px 5px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  transition: all 0.2s;
+
+  &__primary {
+    background-color: #70e5ff;
+    box-shadow: 0px 3px 0px #4fb7ce;
+    &:hover {
+      background-color: lighten($color: #70e5ff, $amount: 10);
+    }
+
+    &:active {
+      transform: translateY(0.5px);
+      box-shadow: 0px 2px 0px #4fb7ce;
+      background-color: darken($color: #70e5ff, $amount: 20);
+    }
+  }
+
+  &__secondary {
+    background-color: #a6a6a6;
+    box-shadow: 0px 3px 0px #747474;
+    &:hover {
+      background-color: lighten($color: #a6a6a6, $amount: 10);
+    }
+
+    &:active {
+      transform: translateY(0.5px);
+      box-shadow: 0px 2px 0px #747474;
+      background-color: darken($color: #a6a6a6, $amount: 20);
+    }
+  }
+
+  &__danger {
+    background-color: #ff4040;
+    box-shadow: 0px 3px 0px #b52424;
+    &:hover {
+      background-color: lighten($color: #ff4040, $amount: 10);
+    }
+
+    &:active {
+      transform: translateY(0.5px);
+      box-shadow: 0px 2px 0px #b52424;
+      background-color: darken($color: #ff4040, $amount: 20);
+    }
+  }
+
+  &__large {
+    padding: 12px 5px;
+    background-color: #70e5ff;
+    box-shadow: 0px 5px 0px #4fb7ce;
+    font-size: 24px;
+    line-height: 26px;
+    min-width: 580px;
+    &:hover {
+      background-color: lighten($color: #70e5ff, $amount: 10);
+    }
+
+    &:active {
+      transform: translateY(2px);
+      box-shadow: 0px 2px 0px #4fb7ce;
+      background-color: darken($color: #70e5ff, $amount: 20);
+    }
+  }
+
+  &__box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__checkbox{
+    width: 14px;
+    height: 14px;
+    border: 2px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 2px;
+    margin-right: 8px;
+    position: relative;
+    &.active::before{
+      content: '';
+      border-radius: 2px;
+      transform: rotate(45deg);
+      position: absolute;
+      left: 0;
+      top: 5px;
+      height: 2px;
+      width: 7px;
+      background-color: #fff;
+    }
+
+    &.active::after{
+      content: '';
+      border-radius: 2px;
+      transform: rotate(-45deg);
+      position: absolute;
+      left: 2px;
+      bottom: 8px;
+      height: 2px;
+      width: 20px;
+      background-color: #fff;
+    }
+  }
+}
