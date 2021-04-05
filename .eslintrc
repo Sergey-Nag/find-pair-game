@@ -19,8 +19,8 @@
     "react/prop-types": 0,
     "linebreak-style": 0,
     "no-console": 0,
-    "react/self-closing-comp": "warn"
-    "no-unused-vars": "warn"
+    "react/self-closing-comp": "warn",
+    "no-unused-vars": "warn",
     "react/prop-types": 0
   }
 }
