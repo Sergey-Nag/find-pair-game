@@ -6,11 +6,11 @@ function App() {
     <div className="App">
       <div className="grid">
         <GameCard />
+        <GameCard a />
         <GameCard />
         <GameCard />
         <GameCard />
-        <GameCard />
-        <GameCard />
+        <GameCard a />
         <GameCard />
         <GameCard />
         <GameCard />

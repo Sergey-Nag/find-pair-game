@@ -4,14 +4,16 @@
 
 .card {
   position: relative;
-  perspective: 1000px;
+  cursor: pointer;
+  perspective: 1500px;
   perspective-origin: center;
   height: 200px;
   width: 100%;
 
   &__shirt {
-    @extend %gamecard-default;
-    will-change: transform;    
+    @extend %gamecard-default, %animation-init;
+    animation-name: gamecard-shirt-out;
+    will-change: transform;
     background:
       $gamecard_background_img,
       $gamecard_background_linear_gradient,
@@ -21,26 +23,39 @@
     border: 1px solid #78e4ff;
     border-bottom-color: #59aabe;
 
-    transform-style: flat;
-    transform: rotateY(0deg);
     z-index: 2;
   }
 
   &__shadow {
-    @extend %gamecard-default;
+    @extend %gamecard-default, %animation-init;
+    animation-name: gamecard-shadow-out;
+    will-change: transform;
     background-color: rgba(0, 0, 0, 0.25);
-    transform: translateY(4px) scaleX(1);
+    // transform: translateY(4px) scaleX(1);
+    
     z-index: 1;
   }
-
   
-  &:hover {
-    .card {
+  &:not(.card_flipped) {
+    transition: transform .2s $gamecard_animate_timing;
+    &:hover {
+      transform: translateY(-5px);
+
+      .card__shadow {
+        transform: translateY(8px);
+      }
+    }
+  }
+
+  &_flipped {
+    z-index: 100;
+
+    .card {  
       &__shirt {
-        transform: rotateY(180deg);
+        animation-name: gamecard-shirt-in;
       }
       &__shadow {
-        animation: gamecard-shadow $gamecard_animate_duration $gamecard_animate_timing;
+        animation-name: gamecard-shadow-in;
       }
     }
   }

@@ -24,3 +24,9 @@
     $gamecard_animate_duration
     $gamecard_animate_timing;
 }
+
+%animation-init {
+  animation-duration: $gamecard_animate_duration;
+  animation-timing-function: $gamecard_animate_timing;
+  animation-fill-mode: forwards;
+}
