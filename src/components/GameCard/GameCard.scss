@@ -1,0 +1,48 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/mixins';
+@import '../../assets/scss/keyframes';
+
+.card {
+  position: relative;
+  perspective: 1000px;
+  perspective-origin: center;
+  height: 200px;
+  width: 100%;
+
+  &__shirt {
+    @extend %gamecard-default;
+    will-change: transform;    
+    background:
+      $gamecard_background_img,
+      $gamecard_background_linear_gradient,
+      $gamecard_background_radial_gradient,
+      rgb(112, 229, 255);
+
+    border: 1px solid #78e4ff;
+    border-bottom-color: #59aabe;
+
+    transform-style: flat;
+    transform: rotateY(0deg);
+    z-index: 2;
+  }
+
+  &__shadow {
+    @extend %gamecard-default;
+    background-color: rgba(0, 0, 0, 0.25);
+    transform: translateY(4px) scaleX(1);
+    z-index: 1;
+  }
+
+  
+  &:hover {
+    .card {
+      &__shirt {
+        transform: rotateY(180deg);
+      }
+      &__shadow {
+        animation: gamecard-shadow $gamecard_animate_duration $gamecard_animate_timing;
+      }
+    }
+  }
+  
+}

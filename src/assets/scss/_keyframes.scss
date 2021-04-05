@@ -1,0 +1,16 @@
+@keyframes gamecard-shadow {
+  0% {
+    transform: translateY(4px) scaleX(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(4px) scaleX(.1);
+    opacity: .7;
+  }
+
+  100% {
+    transform: translateY(4px) scaleX(1);
+    opacity: 1;
+  }
+}

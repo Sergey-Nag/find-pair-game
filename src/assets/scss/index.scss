@@ -10,3 +10,17 @@ html {
   font-family: Roboto, Arial, sans-serif;
   font-size: 14px;
 }
+
+body {
+  background: #f2f2f2;
+}
+
+.grid {
+  padding: 50px;
+  margin: 0 auto;
+  display: grid;
+  width: 80%;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 20px;
+  row-gap: 17px;
+}

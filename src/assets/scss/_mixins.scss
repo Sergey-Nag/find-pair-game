@@ -1,7 +1,26 @@
+@import './variables';
+
 %inline-block {
   display: inline-block;
 }
 
 %flex {
   display: flex;
+}
+
+%gamecard-default {
+  @extend %gamecard-transition;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: inherit;
+  height: inherit;
+  border-radius: 10px;
+}
+
+%gamecard-transition {
+  transition: 
+    $gamecard_animate_value
+    $gamecard_animate_duration
+    $gamecard_animate_timing;
 }

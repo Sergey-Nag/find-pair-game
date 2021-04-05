@@ -7,3 +7,30 @@ $color_silver: #c0c0c0;
 $color_bronze: #cd7f32;
 
 $gamelevel_card_info_padding: 20px;
+
+$gamecard_background_img: url('../../assets/img/card-images/question_mark.svg') no-repeat center / auto 70%;
+$gamecard_background_linear_gradient: 
+  linear-gradient(
+  0deg,
+  rgba(132, 233, 255, 0.8),
+  rgba(132, 233, 255, 0.8)
+  );
+$gamecard_background_radial_gradient: 
+  radial-gradient(
+    84.15% 104.01% at 50% 50%,
+    rgba(112, 229, 255, 0.7) 0%,
+    rgba(79, 183, 206, 0.7) 12.5%,
+    rgba(112, 229, 255, 0.7) 25%,
+    rgba(79, 183, 206, 0.7) 37.5%,
+    rgba(112, 229, 255, 0.7) 49.48%,
+    rgba(79, 183, 206, 0.7) 61.46%,
+    rgba(112, 229, 255, 0.7) 73.96%,
+    rgba(79, 183, 206, 0.7) 85.94%,
+    rgba(112, 229, 255, 0.7) 100%
+  );
+$gamecard_shadow: 0px 5px 0px rgba(0, 0, 0, 0.25);
+$gamecard_shadow_inset: inset 0px 0px 0px 10px rgba(204, 245, 255, .3);
+
+$gamecard_animate_duration: .5s;
+$gamecard_animate_timing: ease-out;
+$gamecard_animate_value: transform;
