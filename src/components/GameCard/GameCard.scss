@@ -22,8 +22,21 @@
 
     border: 1px solid #78e4ff;
     border-bottom-color: #59aabe;
+    backface-visibility: hidden;
 
     z-index: 2;
+  }
+
+  &__face {
+    @extend %gamecard-default, %animation-init;
+    animation-name: gamecard-face-out;
+    will-change: transform;
+    background-color: white;
+    background-position: center;
+    background-size: 80%;
+    background-repeat: no-repeat;
+    backface-visibility: hidden;
+    z-index: 3;
   }
 
   &__shadow {
@@ -31,19 +44,15 @@
     animation-name: gamecard-shadow-out;
     will-change: transform;
     background-color: rgba(0, 0, 0, 0.25);
-    // transform: translateY(4px) scaleX(1);
     
     z-index: 1;
   }
   
   &:not(.card_flipped) {
-    transition: transform .2s $gamecard_animate_timing;
+    transition: filter .2s $gamecard_animate_timing;
+  
     &:hover {
-      transform: translateY(-5px);
-
-      .card__shadow {
-        transform: translateY(8px);
-      }
+      filter: $gamecard_hover_filter;
     }
   }
 
@@ -53,6 +62,9 @@
     .card {  
       &__shirt {
         animation-name: gamecard-shirt-in;
+      }
+      &__face {
+        animation-name: gamecard-face-in;
       }
       &__shadow {
         animation-name: gamecard-shadow-in;

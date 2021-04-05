@@ -31,6 +31,8 @@ $gamecard_background_radial_gradient:
 $gamecard_shadow: 0px 5px 0px rgba(0, 0, 0, 0.25);
 $gamecard_shadow_inset: inset 0px 0px 0px 10px rgba(204, 245, 255, .3);
 
-$gamecard_animate_duration: .5s;
+$gamecard_animate_duration: .4s;
 $gamecard_animate_timing: ease-out;
 $gamecard_animate_value: transform;
+
+$gamecard_hover_filter: brightness(1.05);
