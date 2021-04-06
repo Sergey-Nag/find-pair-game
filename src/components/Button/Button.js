@@ -4,6 +4,7 @@ import './Button.scss';
 function Button({
   children, clickHandler, variant, isCheckbox, checked,
 }) {
+
   return (
     <button className={`button button__${variant}`} type="button" onClick={clickHandler}>
       {isCheckbox && (
