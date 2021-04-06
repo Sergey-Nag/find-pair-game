@@ -5,7 +5,7 @@ function Button({
   children, clickHandler, classes, isCheckbox, checked,
 }) {
   return (
-    <button className={classes} type="button" onClick={clickHandler}>
+    <button className={`button ${classes.split(' ').map((el) => `button__${el}`).join('')}`} type="button" onClick={clickHandler}>
       {isCheckbox && (
         <div className="button__box">
           <div className={`button__checkbox ${checked ? 'active' : ''}`} />

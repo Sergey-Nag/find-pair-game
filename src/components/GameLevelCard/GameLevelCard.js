@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './GameLevelCard.scss';
 
 import gameLevelData from '../../utils/gameLevelData';
+import Button from '../Button';
 
 function GameLevelCard({ level, active, onActive }) {
   const [cardData, setCardData] = useState({});
@@ -26,15 +27,14 @@ function GameLevelCard({ level, active, onActive }) {
         </h3>
       </div>
       <div className="gamelevel__button_wrapp">
-        <button
-          className="gamelevel__button"
-          type="button"
-          onClick={() => onActive(level)}
+        <Button
+          isCheckbox
+          classes="primary"
+          checked={active}
+          clickHandler={() => onActive(level)}
         >
-          <input type="checkbox" checked={active} readOnly />
-          {' '}
           {cardData.layout}
-        </button>
+        </Button>
       </div>
     </div>
   );
