@@ -1,0 +1,38 @@
+.homepage{
+    max-width: 730px;
+    margin: 0 auto;
+    padding: 0 10px;
+    display: grid;
+    gap: 15px;
+    &__leaderboard-wrapper{
+        padding: 18px 60px 20px;
+        background: #E3E3E3;
+        box-shadow: 0px 9px 0px rgba(0, 0, 0, 0.25);
+        border-radius: 0px 0px 50px 50px;
+    }
+    &__title{
+        margin-bottom: 30px;
+        font-weight: 900;
+        font-size: 48px;
+        line-height: 56px;
+        text-align: center;
+        text-transform: uppercase;
+        color: #000000;
+    }
+    &__level-wrapper{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        justify-items: center;
+    }
+    &__subtitle{
+        color: #6D6D6D;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 28px;
+        text-align: center;
+        letter-spacing: 0.1em;
+    }
+    &__button-wrapper{
+        justify-self: center;
+    }
+}
