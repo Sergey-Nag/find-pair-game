@@ -19,8 +19,7 @@ body {
   padding: 50px;
   margin: 0 auto;
   display: grid;
-  width: 80%;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 20px;
-  row-gap: 17px;
+  width: 90%;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 10px 7px;
 }
