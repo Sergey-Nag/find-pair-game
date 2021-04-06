@@ -13,30 +13,30 @@ function Leaderboard({ leaders }) {
     [leaders]);
 
   return (
-    <table className="leaderboard">
-      <thead className="leaderboard__head">
-        <tr>
-          <td className="leaderboard__col leaderboard__col_header leaderboard__col_width_sm">
+    <div className="leaderboard">
+      <div className="leaderboard__head">
+        <div className="leaderboard__row">
+          <div className="leaderboard__col leaderboard__col_header">
             №
-          </td>
-          <td className="leaderboard__col leaderboard__col_header">Nickname</td>
-          <td className="leaderboard__col leaderboard__col_header leaderboard__col_text_right">
+          </div>
+          <div className="leaderboard__col leaderboard__col_header">Nickname</div>
+          <div className="leaderboard__col leaderboard__col_header leaderboard__col_text_right">
             Time
-          </td>
-        </tr>
-      </thead>
-      <tbody className="leaderboard__body">
+          </div>
+        </div>
+      </div>
+      <div className="leaderboard__body">
         {returnSortedArr().map(({ id, nickname, time }) => (
-          <tr className="leaderboard__row" key={id}>
-            <td className="leaderboard__col" />
-            <td className="leaderboard__col">{nickname}</td>
-            <td className="leaderboard__col leaderboard__col_text_right">
+          <div className="leaderboard__row" key={id}>
+            <div className="leaderboard__col" />
+            <div className="leaderboard__col">{nickname}</div>
+            <div className="leaderboard__col leaderboard__col_text_right">
               {returnGameTime(time)}
-            </td>
-          </tr>
+            </div>
+          </div>
         ))}
-      </tbody>
-    </table>
+      </div>
+    </div>
   );
 }
 
