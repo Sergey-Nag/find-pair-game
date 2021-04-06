@@ -1,2 +1,0 @@
-(this["webpackJsonpfind-pair-game"]=this["webpackJsonpfind-pair-game"]||[]).push([[0],{10:function(e,n,t){"use strict";t.r(n);var c=t(0),i=t.n(c),r=t(3),a=t.n(r),s=(t(8),t(1));var o=function(){return Object(s.jsx)("div",{className:"App"})};a.a.render(Object(s.jsx)(i.a.StrictMode,{children:Object(s.jsx)(o,{})}),document.getElementById("root"))},8:function(e,n,t){}},[[10,1,2]]]);
-//# sourceMappingURL=main.ed86d2c2.chunk.js.map

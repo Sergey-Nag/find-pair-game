@@ -1,20 +1,23 @@
 {
   "files": {
-    "main.css": "/find-pair-game/static/css/main.72b8536d.chunk.css",
-    "main.js": "/find-pair-game/static/js/main.ed86d2c2.chunk.js",
-    "main.js.map": "/find-pair-game/static/js/main.ed86d2c2.chunk.js.map",
+    "main.css": "/find-pair-game/static/css/main.7a837f5b.chunk.css",
+    "main.js": "/find-pair-game/static/js/main.b0ce651b.chunk.js",
+    "main.js.map": "/find-pair-game/static/js/main.b0ce651b.chunk.js.map",
     "runtime-main.js": "/find-pair-game/static/js/runtime-main.51db2732.js",
     "runtime-main.js.map": "/find-pair-game/static/js/runtime-main.51db2732.js.map",
-    "static/js/2.b6c63f1d.chunk.js": "/find-pair-game/static/js/2.b6c63f1d.chunk.js",
-    "static/js/2.b6c63f1d.chunk.js.map": "/find-pair-game/static/js/2.b6c63f1d.chunk.js.map",
+    "static/js/2.dabd0d44.chunk.js": "/find-pair-game/static/js/2.dabd0d44.chunk.js",
+    "static/js/2.dabd0d44.chunk.js.map": "/find-pair-game/static/js/2.dabd0d44.chunk.js.map",
     "index.html": "/find-pair-game/index.html",
-    "static/css/main.72b8536d.chunk.css.map": "/find-pair-game/static/css/main.72b8536d.chunk.css.map",
-    "static/js/2.b6c63f1d.chunk.js.LICENSE.txt": "/find-pair-game/static/js/2.b6c63f1d.chunk.js.LICENSE.txt"
+    "static/css/main.7a837f5b.chunk.css.map": "/find-pair-game/static/css/main.7a837f5b.chunk.css.map",
+    "static/js/2.dabd0d44.chunk.js.LICENSE.txt": "/find-pair-game/static/js/2.dabd0d44.chunk.js.LICENSE.txt",
+    "static/media/easy.448b1a60.svg": "/find-pair-game/static/media/easy.448b1a60.svg",
+    "static/media/hard.b4764cca.svg": "/find-pair-game/static/media/hard.b4764cca.svg",
+    "static/media/medium.57b2e366.svg": "/find-pair-game/static/media/medium.57b2e366.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.51db2732.js",
-    "static/js/2.b6c63f1d.chunk.js",
-    "static/css/main.72b8536d.chunk.css",
-    "static/js/main.ed86d2c2.chunk.js"
+    "static/js/2.dabd0d44.chunk.js",
+    "static/css/main.7a837f5b.chunk.css",
+    "static/js/main.b0ce651b.chunk.js"
   ]
 }
