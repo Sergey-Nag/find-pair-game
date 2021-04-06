@@ -7,7 +7,38 @@ import {
 } from './leaderboardTypes';
 
 const initialState = {
-  list: [],
+  list: [
+    {
+      id: 1,
+      nickname: 'Username',
+      time: 1327536135417,
+    },
+    {
+      id: 3,
+      nickname: 'nick',
+      time: 1327536265417,
+    },
+    {
+      id: 2,
+      nickname: 'user',
+      time: 1327536140417,
+    },
+    {
+      id: 4,
+      nickname: 'nickName',
+      time: 1327536161417,
+    },
+    {
+      id: 5,
+      nickname: '_nickname_123',
+      time: 1327536177417,
+    },
+    {
+      id: 6,
+      nickname: 'asd',
+      time: 1327536196417,
+    },
+  ],
   isLoading: false,
   isLoaded: false,
   isError: false,
