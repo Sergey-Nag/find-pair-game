@@ -29,7 +29,7 @@ function GameLevelCard({ level, active, onActive }) {
       <div className="gamelevel__button_wrapp">
         <Button
           isCheckbox
-          classes="primary"
+          variant="primary"
           checked={active}
           clickHandler={() => onActive(level)}
         >
