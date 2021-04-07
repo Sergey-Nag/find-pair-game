@@ -17,10 +17,15 @@
     }
     &_medium {
       width: 780px;
-      height: 100%;
       grid-template-columns: repeat(8, 1fr);
       grid-template-rows: repeat(8, 1fr);
       gap: 10px 9px;
+    }
+    &_hard {
+      width: 1200px;
+      grid-template-columns: repeat(14, 1fr);
+      grid-template-rows: repeat(10, 1fr);
+      gap: 8px 7px;
     }
   }
 }

@@ -31,7 +31,7 @@ function Gamepage() {
       </div>
       <div className="game__playground">
         <Playground
-          level="medium"
+          level="hard"
           cards={cards.list}
         />
       </div>
