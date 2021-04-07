@@ -8,6 +8,10 @@
   display: flex;
 }
 
+%grid {
+  display: grid;
+}
+
 %gamecard-default {
   @extend %gamecard-transition;
   position: absolute;
