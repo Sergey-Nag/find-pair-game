@@ -7,6 +7,7 @@ import './Gamepage.scss';
 function Gamepage() {
   const player = useSelector((state) => state.player);
   const game = useSelector((state) => state.game);
+  const leaderboard = useSelector((state) => state.leaderboard);
 
   const nickname = player.nickname ?? '...';
   const time = game.time ?? '--:--';
@@ -19,7 +20,7 @@ function Gamepage() {
           <span className="game__time">{time}</span>
         </div>
         <div className="game__leaderboard">
-          <Leaderboard leaders={[]} />
+          <Leaderboard leaders={leaderboard.list} />
         </div>
         <div className="game__button">
           <Button variant="danger">Surrender</Button>
