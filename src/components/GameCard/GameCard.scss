@@ -56,6 +56,13 @@
     }
   }
 
+  &:active {
+    .card__shirt {
+      animation-name: slide-down;
+      animation-duration: .05s;
+    }
+  }
+
   &_flipped {
     z-index: 100;
 
