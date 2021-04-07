@@ -23,7 +23,7 @@ function Gamepage() {
           <span className="game__time">{time}</span>
         </div>
         <div className="game__leaderboard">
-          <Leaderboard leaders={leaderboard.list} />
+          <Leaderboard leaders={leaderboard.list} inGame />
         </div>
         <div className="game__button">
           <Button variant="danger">Surrender</Button>
@@ -31,7 +31,7 @@ function Gamepage() {
       </div>
       <div className="game__playground">
         <Playground
-          level="hard"
+          level={gamemode}
           cards={cards.list}
         />
       </div>
