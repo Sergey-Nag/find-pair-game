@@ -1,34 +1,49 @@
-import { useCallback, useEffect, useState } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
+import { getMillisecondsFromGameTime } from '../utils/helpers';
 
-const useCountdownTimer = (isPlay, time, callback) => {
-  const [startTime, setStartTime] = useState(0);
-  const [endTime, setEndTime] = useState(0);
+// const timer = new Timer();
+
+const useCountdownTimer = (isPlay, time, callback, interval = 1000) => {
+  const timerRef = useRef(null);
+  const [leftTime, setLeftTime] = useState(0);
+  const second = getMillisecondsFromGameTime({ min: 0, sec: 1 });
 
   useEffect(() => {
-    const start = Date.now();
-    setStartTime(start);
-  }, []);
-
-  useEffect(() => {
-    const { min, sec } = time;
-    const end = new Date(0, 0, 0, 0, min, sec, 0);
-    setEndTime(end);
+    setLeftTime(getMillisecondsFromGameTime(time));
   }, [time]);
 
-  const timer = useCallback(() => setInterval(() => {
-    const goneTime = startTime - Date.now();
-    const timeLeft = endTime - goneTime;
-    console.log('timer');
+  const tick = useCallback(() => {
+    callback(leftTime);
 
-    callback(timeLeft);
-  }, 1000), [callback, startTime, endTime]);
+    if (isPlay) timerRef.current = setTimeout(tick, interval);
+
+    const res = () => second - leftTime;
+    setLeftTime(res());
+  }, [isPlay, callback, interval, leftTime, second]);
+
+  const clearTimerRef = useCallback(() => {
+    if (!timerRef.current) return;
+
+    clearTimeout(timerRef.current);
+    timerRef.current = null;
+    setLeftTime(getMillisecondsFromGameTime(time));
+  }, [time]);
+
+  const start = useCallback(() => {
+    if (timerRef.current) return;
+
+    timerRef.current = setTimeout(tick, interval);
+  }, [interval, tick]);
 
   useEffect(() => {
-    if (isPlay) {
-      timer();
-      console.log('eff');
-    } else clearInterval(timer);
-  }, [isPlay, timer]);
+    start();
+    if (!isPlay) clearTimerRef();
+  }, [isPlay, start, clearTimerRef]);
 };
 
 export default useCountdownTimer;
