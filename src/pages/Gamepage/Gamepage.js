@@ -1,20 +1,47 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useCallback, useEffect, useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Button from '../../components/Button';
 import Leaderboard from '../../components/Leaderboard';
 import Playground from '../../components/Playground';
+import useCountdownTimer from '../../hooks/useCountdownTimer';
+import { END_GAME, SET_TIME_GAME, START_GAME } from '../../store/game/gameTypes';
+import { formatGameTime } from '../../utils/helpers';
 import './Gamepage.scss';
 
 function Gamepage() {
   const player = useSelector((state) => state.player);
   const game = useSelector((state) => state.game);
   const gamemode = useSelector((state) => state.gamemode);
-  const leaderboard = useSelector((state) => state.leaderboard);
-  const cards = useSelector((state) => state.cards);
+  const dispatch = useDispatch();
 
   const nickname = player.nickname ?? '...';
   const time = game.time ?? '--:--';
+  const endTime = useMemo(() => ({ min: 3, sec: 0 }), []);
 
+  useCountdownTimer(game.isPlaying, endTime, useCallback((t) => {
+    const gameTime = new Date(t);
+    const min = gameTime.getMinutes();
+    const sec = gameTime.getSeconds();
+
+    dispatch({
+      type: SET_TIME_GAME,
+      payload: formatGameTime(min, sec),
+    });
+  }, [dispatch]));
+
+  useEffect(() => {
+    console.log(game);
+  }, [game]);
+
+  const clickGame = useCallback(() => {
+    let type = START_GAME;
+
+    if (game.isPlaying) type = END_GAME;
+
+    dispatch({ type });
+  }, [dispatch, game]);
+
+  console.log('render');
   return (
     <div className="game">
       <div className="game__interface">
@@ -23,16 +50,15 @@ function Gamepage() {
           <span className="game__time">{time}</span>
         </div>
         <div className="game__leaderboard">
-          <Leaderboard leaders={leaderboard.list} inGame />
+          <Leaderboard inGame />
         </div>
         <div className="game__button">
-          <Button variant="danger">Surrender</Button>
+          <Button variant="danger" clickHandler={clickGame}>Surrender</Button>
         </div>
       </div>
       <div className="game__playground">
         <Playground
           level={gamemode}
-          cards={cards.list}
         />
       </div>
       <div className="game__loader" />

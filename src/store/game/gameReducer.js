@@ -16,11 +16,11 @@ const initialState = {
 function gameReducer(state = initialState, { type, payload }) {
   switch (type) {
     case START_GAME:
+      console.log('start');
       return {
         ...state,
         isPlaying: true,
       };
-
     case PAUSE_GAME:
       return {
         ...state,
