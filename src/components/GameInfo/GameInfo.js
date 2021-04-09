@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useTimer } from 'react-timer-hook';
 import useCountdownTimer from '../../hooks/useCountdownTimer';
-import { SET_TIME_GAME } from '../../store/game/gameTypes';
+import { SET_TIME_GAME, PAUSE_GAME } from '../../store/game/gameTypes';
 import { formatGameTime, getMinutesFromMs, getSecondsFromMs } from '../../utils/helpers';
 
-function GameInfo({ timestamp }) {
+function GameInfo() {
   const player = useSelector((state) => state.player);
   const game = useSelector((state) => state.game);
   const dispatch = useDispatch();
@@ -13,32 +12,22 @@ function GameInfo({ timestamp }) {
     start,
     stop,
     pause,
+    restart,
     leftTime,
-  } = useCountdownTimer([3, 15], 1000);
-  // const {
-  //   seconds,
-  //   start,
-  //   restart,
-  //   pause,
-  //   isRunning,
-  //   minutes,
-  // } = useTimer({
-  //   expiryTimestamp: timestamp,
-  //   onExpire: () => console.warn('onExpire called'),
-  // });
-
-  // useEffect(() => {
-  //   console.log('isRunning', isRunning);
-  // }, [isRunning]);
+    callbacks,
+  } = useCountdownTimer([0, 5], 1000);
 
   useEffect(() => {
+    callbacks.finished = () => {
+      if (leftTime === 0) dispatch({ type: PAUSE_GAME });
+    };
+
     if (game.isPlaying) {
       start();
-    } else pause();
-  }, [start, pause, game.isPlaying]);
+    } else stop();
+  }, [start, stop, callbacks, game.isPlaying, leftTime, dispatch]);
 
   useEffect(() => {
-    console.log(leftTime);
     const min = getMinutesFromMs(leftTime);
     const sec = getSecondsFromMs(leftTime);
 
