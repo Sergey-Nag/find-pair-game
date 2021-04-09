@@ -1,11 +1,19 @@
 const formatGameTime = (min, sec) => `${min < 10 ? '0' : ''}${min}:${sec < 10 ? '0' : ''}${sec}`;
 
-const getMillisecondsFromGameTime = ({ min, sec }) => {
+const getMinutesFromMs = (ms) => new Date(ms).getMinutes();
+const getSecondsFromMs = (ms) => new Date(ms).getSeconds();
+
+const getMillisecondsFromGameTime = (min, sec) => {
   const time = new Date();
 
-  time.setSeconds(time.getSeconds() + sec + min * 60);
+  time.setTime((sec * 1000) + (min * 1000 * 60));
 
-  return time;
+  return time.valueOf();
 };
 
-export { formatGameTime, getMillisecondsFromGameTime };
+export {
+  formatGameTime,
+  getMillisecondsFromGameTime,
+  getMinutesFromMs,
+  getSecondsFromMs,
+};

@@ -23,7 +23,7 @@ function Gamepage() {
   return (
     <div className="game">
       <div className="game__interface">
-        {isPlay && <GameInfo timestamp={time} /> }
+        <GameInfo timestamp={time} />
         <div className="game__leaderboard">
           <Leaderboard inGame />
         </div>

@@ -6,41 +6,56 @@ import {
 } from 'react';
 import { getMillisecondsFromGameTime } from '../utils/helpers';
 
-// const timer = new Timer();
+const useCountdownTimer = ([min, sec], interval) => {
+  const timerRef = useRef(null);
+  const [isOver, setIsOver] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [initialValue, setInitialValue] = useState(getMillisecondsFromGameTime(min, sec));
+  const [leftTime, setLeftTime] = useState(initialValue);
 
-const useCountdownTimer = (isPlay, time, callback, interval = 1000) => {
-  // const timerRef = useRef(null);
-  const [timerRef, setTimerRef] = useState(null);
-  const [leftTime, setLeftTime] = useState(getMillisecondsFromGameTime(time));
+  const startTimer = useCallback(() => {
+    if (timerRef.current) return;
 
-  const tick = useCallback(() => {
-    callback(leftTime);
+    timerRef.current = setInterval(() => setLeftTime((time) => time - 1000), interval);
+  }, [interval]);
 
-    setTimerRef(setTimeout(tick, interval));
+  const stopTimer = () => {
+    if (!timerRef.current) return;
 
-    const second = getMillisecondsFromGameTime({ min: 0, sec: 1 });
-    setLeftTime(leftTime - second);
-  }, [callback, interval, leftTime]);
+    clearInterval(timerRef.current);
+    timerRef.current = null;
+  };
 
-  const clearTimerRef = useCallback(() => {
-    if (!timerRef) return;
-
-    clearTimeout(timerRef);
-    setTimerRef(null);
-    // timerRef.current = null;
-  }, [timerRef]);
-
-  const start = useCallback(() => {
-    if (timerRef) return;
-
-    setTimerRef(setTimeout(tick, interval));
-  }, [interval, tick, timerRef]);
+  const resetTimer = useCallback(() => {
+    setLeftTime(initialValue);
+  }, [initialValue]);
 
   useEffect(() => {
-    // start();
-    // clearTimerRef();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isPlay]);
+    if (isOver) {
+      stopTimer();
+      resetTimer();
+      return false;
+    }
+
+    if (isPlaying) startTimer();
+    else stopTimer();
+
+    return () => stopTimer();
+  }, [isOver, isPlaying, startTimer, resetTimer]);
+
+  return {
+    start: () => {
+      setIsOver(false);
+      setIsPlaying(true);
+    },
+    pause: () => setIsPlaying(false),
+    stop: () => setIsOver(true),
+    restart: (newTime) => {
+      setIsOver(true);
+      if (newTime) setInitialValue(newTime);
+    },
+    leftTime,
+  };
 };
 
 export default useCountdownTimer;
