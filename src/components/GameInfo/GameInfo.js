@@ -19,13 +19,17 @@ function GameInfo() {
 
   useEffect(() => {
     callbacks.finished = () => {
+      console.log('finished');
       if (leftTime === 0) dispatch({ type: PAUSE_GAME });
+    };
+    callbacks.paused = () => {
+      console.log('paused');
     };
 
     if (game.isPlaying) {
       start();
-    } else stop();
-  }, [start, stop, callbacks, game.isPlaying, leftTime, dispatch]);
+    } else pause();
+  }, [start, pause, callbacks, game.isPlaying, leftTime, dispatch]);
 
   useEffect(() => {
     const min = getMinutesFromMs(leftTime);
