@@ -32,12 +32,9 @@ function GameInfo() {
   }, [start, pause, callbacks, game.isPlaying, leftTime, dispatch]);
 
   useEffect(() => {
-    const min = getMinutesFromMs(leftTime);
-    const sec = getSecondsFromMs(leftTime);
-
     dispatch({
       type: SET_TIME_GAME,
-      payload: formatGameTime(min, sec),
+      payload: leftTime,
     });
   }, [leftTime, dispatch]);
 
