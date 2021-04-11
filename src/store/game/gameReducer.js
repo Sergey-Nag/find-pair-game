@@ -20,6 +20,7 @@ function gameReducer(state = initialState, { type, payload }) {
         isPlaying: true,
         isPause: false,
       };
+
     case PAUSE_GAME:
       return {
         ...state,
