@@ -1,7 +1,6 @@
 import {
   START_GAME,
   PAUSE_GAME,
-  RESUME_GAME,
   END_GAME,
   SET_TIME_GAME,
 } from './gameTypes';
@@ -19,19 +18,13 @@ function gameReducer(state = initialState, { type, payload }) {
       return {
         ...state,
         isPlaying: true,
+        isPause: false,
       };
     case PAUSE_GAME:
       return {
         ...state,
         isPlaying: false,
         isPause: true,
-      };
-
-    case RESUME_GAME:
-      return {
-        ...state,
-        isPause: false,
-        isPlaying: true,
       };
 
     case END_GAME:
