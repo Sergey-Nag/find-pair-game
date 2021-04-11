@@ -2,7 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useCountdownTimer from '../../hooks/useCountdownTimer';
 import { SET_TIME_GAME, PAUSE_GAME } from '../../store/game/gameTypes';
-import { formatGameTime, getMinutesFromMs, getSecondsFromMs } from '../../utils/helpers';
+import { SET_TIME_PLAYER } from '../../store/player/playerTypes';
+import {
+  formatGameTime,
+  getMinutesFromMs,
+  getSecondsFromMs,
+  getMillisecondsFromGameTime,
+} from '../../utils/helpers';
+
+const GAME_TIME = [2, 20];
 
 function GameInfo() {
   const player = useSelector((state) => state.player);
@@ -17,7 +25,7 @@ function GameInfo() {
     // restart,
     leftTime,
     callbacks,
-  } = useCountdownTimer([3, 0], 1000);
+  } = useCountdownTimer(GAME_TIME, 1000);
 
   useEffect(() => {
     callbacks.finished = () => {
@@ -37,6 +45,11 @@ function GameInfo() {
     dispatch({
       type: SET_TIME_GAME,
       payload: leftTime,
+    });
+
+    dispatch({
+      type: SET_TIME_PLAYER,
+      payload: getMillisecondsFromGameTime(...GAME_TIME) - leftTime,
     });
   }, [leftTime, dispatch]);
 
