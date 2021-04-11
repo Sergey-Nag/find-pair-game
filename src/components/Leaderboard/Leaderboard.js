@@ -22,7 +22,6 @@ function Leaderboard({ inGame }) {
         id: 'player',
         nickname: player.nickname,
         time: player.time,
-        isPlayer: true,
       });
     }
 
@@ -44,15 +43,15 @@ function Leaderboard({ inGame }) {
       </div>
       <div className={`leaderboard__body ${inGame ? '' : 'leaderboard__body_top-players'}`}>
         {returnSortedArr().map(({
-          id, nickname, time, isPlayer,
+          id, nickname, time,
         }) => (
           <div
             key={id}
             className={
-              `leaderboard__row ${(inGame && isPlayer) ? 'leaderboard__row_player' : ''}`
+              `leaderboard__row ${(inGame && id === 'player') ? 'leaderboard__row_player' : ''}`
             }
           >
-            <div className={`leaderboard__col ${(inGame && isPlayer && time === 0) ? 'leaderboard__col_no-counter' : ''}`} />
+            <div className={`leaderboard__col ${(inGame && id === 'player' && time === 0) ? 'leaderboard__col_no-counter' : ''}`} />
             <div className="leaderboard__col">{nickname}</div>
             <div className="leaderboard__col leaderboard__col_text_right">
               {returnGameTime(time)}
