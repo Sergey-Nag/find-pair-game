@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useCountdownTimer from '../../hooks/useCountdownTimer';
 import { SET_TIME_GAME, PAUSE_GAME } from '../../store/game/gameTypes';
@@ -10,12 +10,12 @@ function GameInfo() {
   const dispatch = useDispatch();
   const {
     start,
-    stop,
+    // stop,
     pause,
-    restart,
+    // restart,
     leftTime,
     callbacks,
-  } = useCountdownTimer([0, 5], 1000);
+  } = useCountdownTimer([3, 0], 1000);
 
   useEffect(() => {
     callbacks.finished = () => {
