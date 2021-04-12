@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useCountdownTimer from '../../hooks/useCountdownTimer';
 import { SET_TIME_GAME, PAUSE_GAME } from '../../store/game/gameTypes';
-import { formatGameTime, getMinutesFromMs, getSecondsFromMs } from '../../utils/helpers';
 
 function GameInfo() {
   const player = useSelector((state) => state.player);
