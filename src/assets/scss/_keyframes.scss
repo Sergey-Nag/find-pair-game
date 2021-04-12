@@ -73,3 +73,12 @@
     transform: translateY(4px) scaleX(1);
   }
 }
+
+@keyframes slide-down {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(2px);
+  }
+}

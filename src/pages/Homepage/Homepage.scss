@@ -3,13 +3,14 @@
 .homepage{
     height: 100vh;
     max-width: 730px;
+    height: 100vh;
     margin: 0 auto;
     padding: 0 10px;
     display: grid;
     gap: 15px;
     &__leaderboard-wrapper{
         padding: 30px 60px 30px;
-        background: #E3E3E3;
+        background: $wrapper_background;
         box-shadow: 0px 9px 0px rgba(0, 0, 0, 0.25);
         border-radius: 0px 0px 50px 50px;
     }

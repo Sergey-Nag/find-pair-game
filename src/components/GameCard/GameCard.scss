@@ -7,7 +7,7 @@
   cursor: pointer;
   perspective: 1500px;
   perspective-origin: center;
-  height: 200px;
+  height: 100%;
   width: 100%;
 
   &__shirt {
@@ -53,6 +53,13 @@
   
     &:hover {
       filter: $gamecard_hover_filter;
+    }
+  }
+
+  &:active {
+    .card__shirt {
+      animation-name: slide-down;
+      animation-duration: .05s;
     }
   }
 
