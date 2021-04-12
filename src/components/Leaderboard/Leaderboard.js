@@ -1,8 +1,11 @@
 import React, { useCallback } from 'react';
+import { useSelector } from 'react-redux';
 import './Leaderboard.scss';
 import { formatGameTime } from '../../utils/helpers';
 
-function Leaderboard({ leaders, inGame }) {
+function Leaderboard({ inGame }) {
+  const leaderboard = useSelector((state) => state.leaderboard);
+
   const returnGameTime = useCallback((ms) => {
     const min = new Date(ms).getMinutes();
     const sec = new Date(ms).getSeconds();
@@ -11,7 +14,7 @@ function Leaderboard({ leaders, inGame }) {
   }, []);
 
   const returnSortedArr = useCallback(() => {
-    const copiedLeaders = [...leaders];
+    const copiedLeaders = [...leaderboard.list];
 
     if (inGame) {
       const playerObj = {
@@ -26,7 +29,7 @@ function Leaderboard({ leaders, inGame }) {
     }
 
     return copiedLeaders.sort((a, b) => a.time - b.time);
-  }, [leaders, inGame]);
+  }, [leaderboard.list, inGame]);
 
   return (
     <div className="leaderboard">

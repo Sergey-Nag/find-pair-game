@@ -1,10 +1,11 @@
 import React, { useEffect, useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './Playground.scss';
 import GameCard from '../GameCard';
 import { flipCard } from '../../store/cards/cardsActions';
 
-function Playground({ level, cards }) {
+function Playground({ level }) {
+  const cards = useSelector((state) => state.cards);
   const grid = useRef(null);
   const dispatch = useDispatch();
 
@@ -27,7 +28,7 @@ function Playground({ level, cards }) {
 
   return (
     <div className={`playground playground__level_${level}`} ref={grid}>
-      {cards.map((card, index) => <GameCard key={card.id} index={index} card={card} />)}
+      {cards.list.map((card, index) => <GameCard key={card.id} index={index} card={card} />)}
     </div>
   );
 }

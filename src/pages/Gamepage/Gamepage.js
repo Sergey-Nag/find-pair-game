@@ -1,38 +1,38 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Button from '../../components/Button';
+import GameInfo from '../../components/GameInfo';
 import Leaderboard from '../../components/Leaderboard';
 import Playground from '../../components/Playground';
+import { PAUSE_GAME, START_GAME } from '../../store/game/gameTypes';
+import { SET_NICK_PLAYER } from '../../store/player/playerTypes';
 import './Gamepage.scss';
 
 function Gamepage() {
-  const player = useSelector((state) => state.player);
-  const game = useSelector((state) => state.game);
   const gamemode = useSelector((state) => state.gamemode);
-  const leaderboard = useSelector((state) => state.leaderboard);
-  const cards = useSelector((state) => state.cards);
+  const dispatch = useDispatch();
+  const [isPlay, setPlay] = useState(false);
 
-  const nickname = player.nickname ?? '...';
-  const time = game.time ?? '--:--';
+  useEffect(() => {
+    dispatch({ type: isPlay ? START_GAME : PAUSE_GAME });
+    dispatch({ type: SET_NICK_PLAYER, payload: 'Sergey' });
+  }, [dispatch, isPlay]);
 
+  console.log('render');
   return (
     <div className="game">
       <div className="game__interface">
-        <div className="game__info">
-          <span className="game__nickname">{nickname}</span>
-          <span className="game__time">{time}</span>
-        </div>
+        <GameInfo />
         <div className="game__leaderboard">
-          <Leaderboard leaders={leaderboard.list} inGame />
+          <Leaderboard inGame />
         </div>
         <div className="game__button">
-          <Button variant="danger">Surrender</Button>
+          <Button variant="danger" clickHandler={() => setPlay(!isPlay)}>Surrender</Button>
         </div>
       </div>
       <div className="game__playground">
         <Playground
           level={gamemode}
-          cards={cards.list}
         />
       </div>
       <div className="game__loader" />
