@@ -1,23 +1,35 @@
 {
   "files": {
-    "main.css": "/find-pair-game/static/css/main.d0341395.chunk.css",
-    "main.js": "/find-pair-game/static/js/main.000b8683.chunk.js",
-    "main.js.map": "/find-pair-game/static/js/main.000b8683.chunk.js.map",
+    "main.css": "/find-pair-game/static/css/main.8aca8c5d.chunk.css",
+    "main.js": "/find-pair-game/static/js/main.d51cc02d.chunk.js",
+    "main.js.map": "/find-pair-game/static/js/main.d51cc02d.chunk.js.map",
     "runtime-main.js": "/find-pair-game/static/js/runtime-main.51db2732.js",
     "runtime-main.js.map": "/find-pair-game/static/js/runtime-main.51db2732.js.map",
-    "static/js/2.3eaac6f8.chunk.js": "/find-pair-game/static/js/2.3eaac6f8.chunk.js",
-    "static/js/2.3eaac6f8.chunk.js.map": "/find-pair-game/static/js/2.3eaac6f8.chunk.js.map",
+    "static/js/2.dad7a91c.chunk.js": "/find-pair-game/static/js/2.dad7a91c.chunk.js",
+    "static/js/2.dad7a91c.chunk.js.map": "/find-pair-game/static/js/2.dad7a91c.chunk.js.map",
     "index.html": "/find-pair-game/index.html",
-    "static/css/main.d0341395.chunk.css.map": "/find-pair-game/static/css/main.d0341395.chunk.css.map",
-    "static/js/2.3eaac6f8.chunk.js.LICENSE.txt": "/find-pair-game/static/js/2.3eaac6f8.chunk.js.LICENSE.txt",
+    "static/css/main.8aca8c5d.chunk.css.map": "/find-pair-game/static/css/main.8aca8c5d.chunk.css.map",
+    "static/js/2.dad7a91c.chunk.js.LICENSE.txt": "/find-pair-game/static/js/2.dad7a91c.chunk.js.LICENSE.txt",
+    "static/media/acer.97b43230.svg": "/find-pair-game/static/media/acer.97b43230.svg",
+    "static/media/android.5cea2350.svg": "/find-pair-game/static/media/android.5cea2350.svg",
+    "static/media/apple.e8c87215.svg": "/find-pair-game/static/media/apple.e8c87215.svg",
+    "static/media/beats.338456d2.svg": "/find-pair-game/static/media/beats.338456d2.svg",
+    "static/media/cisco.20318700.svg": "/find-pair-game/static/media/cisco.20318700.svg",
+    "static/media/dell.39467c58.svg": "/find-pair-game/static/media/dell.39467c58.svg",
     "static/media/easy.448b1a60.svg": "/find-pair-game/static/media/easy.448b1a60.svg",
     "static/media/hard.b4764cca.svg": "/find-pair-game/static/media/hard.b4764cca.svg",
-    "static/media/medium.57b2e366.svg": "/find-pair-game/static/media/medium.57b2e366.svg"
+    "static/media/hp.2435474a.svg": "/find-pair-game/static/media/hp.2435474a.svg",
+    "static/media/htc.74cbfad7.svg": "/find-pair-game/static/media/htc.74cbfad7.svg",
+    "static/media/intel.e6451727.svg": "/find-pair-game/static/media/intel.e6451727.svg",
+    "static/media/lenovo.025f4804.svg": "/find-pair-game/static/media/lenovo.025f4804.svg",
+    "static/media/medium.57b2e366.svg": "/find-pair-game/static/media/medium.57b2e366.svg",
+    "static/media/nokia.4daa5df2.svg": "/find-pair-game/static/media/nokia.4daa5df2.svg",
+    "static/media/GameCard.scss": "/find-pair-game/static/media/question_mark.596f2b9b.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.51db2732.js",
-    "static/js/2.3eaac6f8.chunk.js",
-    "static/css/main.d0341395.chunk.css",
-    "static/js/main.000b8683.chunk.js"
+    "static/js/2.dad7a91c.chunk.js",
+    "static/css/main.8aca8c5d.chunk.css",
+    "static/js/main.d51cc02d.chunk.js"
   ]
 }
