@@ -44,7 +44,7 @@ const useCountdownTimer = ([min, sec], interval) => {
 
     timerRef.current = setInterval(() => {
       setLeftTime((time) => {
-        console.log('123');
+        console.log('tick');
         if (time === 0) {
           restart();
           return 0;
