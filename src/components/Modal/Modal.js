@@ -1,8 +1,11 @@
 import React from 'react';
 import './Modal.scss';
 import Button from '../Button';
+import gameOverImage from '../../assets/img/modal-images/game-over.svg';
 
-function Modal({ isLogin, isCancel, isGameOver }) {
+function Modal({
+  isLogin, isCancel, isGameOver, score,
+}) {
   return (
     <div className="modal">
       {isLogin && (
@@ -30,11 +33,16 @@ function Modal({ isLogin, isCancel, isGameOver }) {
           </div>
           <div className="modal__container">
             <h4 className="modal__title">Nickname</h4>
-            <input className="modal__input" placeholder="Enter your nickname" />
-            <div className="modal__button-wrapper">
-              <Button variant="secondary">Cancel</Button>
-              <Button variant="primary">Continue</Button>
-            </div>
+            <form className="modal__form">
+              <input
+                className="modal__input"
+                placeholder="Enter your nickname"
+              />
+              <div className="modal__button-wrapper">
+                <Button variant="secondary">Cancel</Button>
+                <Button variant="primary">Continue</Button>
+              </div>
+            </form>
           </div>
         </div>
       )}
@@ -56,15 +64,20 @@ function Modal({ isLogin, isCancel, isGameOver }) {
       {isGameOver && (
         <div className="modal__wrapper">
           <div className="modal__container">
-            <p className="modal__text">
-              Congratulations! You are win!
-              <br />
+            <img className="modal__image" src={gameOverImage} alt="game-over" />
+            <p className="modal__content">
+              Your score:
               {' '}
+              <span className="modal__score">{ score }</span>
+            </p>
+          </div>
+          <div className="modal__container">
+            <p className="modal__text">
               Let&apos;s play again?
             </p>
             <div className="modal__button-wrapper">
               <Button variant="secondary">Back</Button>
-              <Button variant="primary">Continue</Button>
+              <Button variant="primary">Play</Button>
             </div>
           </div>
         </div>
