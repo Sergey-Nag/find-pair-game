@@ -1,14 +1,15 @@
 import React, { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import './Leaderboard.scss';
-import { formatGameTime } from '../../utils/helpers';
+import { formatGameTime, getMinutesFromMs, getSecondsFromMs } from '../../utils/helpers';
 
 function Leaderboard({ inGame }) {
   const leaderboard = useSelector((state) => state.leaderboard);
+  const player = useSelector((state) => state.player);
 
   const returnGameTime = useCallback((ms) => {
-    const min = new Date(ms).getMinutes();
-    const sec = new Date(ms).getSeconds();
+    const min = getMinutesFromMs(ms);
+    const sec = getSecondsFromMs(ms);
 
     return formatGameTime(min, sec);
   }, []);
@@ -17,19 +18,15 @@ function Leaderboard({ inGame }) {
     const copiedLeaders = [...leaderboard.list];
 
     if (inGame) {
-      const playerObj = {
+      copiedLeaders.push({
         id: 'player',
-        nickname: 'test',
-        time: 0,
-        // time: 1327536161417,
-        isPlayer: true,
-      };
-
-      copiedLeaders.push(playerObj);
+        nickname: player.nickname,
+        time: player.time,
+      });
     }
 
     return copiedLeaders.sort((a, b) => a.time - b.time);
-  }, [leaderboard.list, inGame]);
+  }, [leaderboard.list, inGame, player]);
 
   return (
     <div className="leaderboard">
@@ -46,15 +43,15 @@ function Leaderboard({ inGame }) {
       </div>
       <div className={`leaderboard__body ${inGame ? '' : 'leaderboard__body_top-players'}`}>
         {returnSortedArr().map(({
-          id, nickname, time, isPlayer,
+          id, nickname, time,
         }) => (
           <div
-            className={
-              `leaderboard__row ${(inGame && isPlayer) ? 'leaderboard__row_player' : ''}`
-            }
             key={id}
+            className={
+              `leaderboard__row ${(inGame && id === 'player') ? 'leaderboard__row_player' : ''}`
+            }
           >
-            <div className={`leaderboard__col ${(inGame && isPlayer && time === 0) ? 'leaderboard__col_no-counter' : ''}`} />
+            <div className={`leaderboard__col ${(inGame && id === 'player' && time === 0) ? 'leaderboard__col_no-counter' : ''}`} />
             <div className="leaderboard__col">{nickname}</div>
             <div className="leaderboard__col leaderboard__col_text_right">
               {returnGameTime(time)}

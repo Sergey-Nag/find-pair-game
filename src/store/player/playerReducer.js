@@ -1,12 +1,12 @@
 import {
   SET_NICK_PLAYER,
-  SET_SCORE_PLAYER,
-  CLEAR_SCORE_PLAYER,
+  SET_TIME_PLAYER,
+  CLEAR_TIME_PLAYER,
 } from './playerTypes';
 
 const initialState = {
   nickname: null,
-  score: null,
+  time: null,
 };
 
 function playerReducer(state = initialState, action) {
@@ -16,15 +16,15 @@ function playerReducer(state = initialState, action) {
         ...state,
         nickname: action.payload,
       };
-    case SET_SCORE_PLAYER:
+    case SET_TIME_PLAYER:
       return {
         ...state,
-        score: action.payload,
+        time: action.payload,
       };
-    case CLEAR_SCORE_PLAYER:
+    case CLEAR_TIME_PLAYER:
       return {
         ...state,
-        score: null,
+        time: null,
       };
     default:
       return state;
