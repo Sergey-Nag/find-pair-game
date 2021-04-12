@@ -6,7 +6,7 @@ import {
 
 const initialState = {
   compare: [],
-  list: [...new Array(140)].map((el, i) => ({
+  list: [...new Array(16)].map((el, i) => ({
     id: i,
     name: 'apple',
     isFlipped: false,
