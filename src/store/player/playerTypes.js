@@ -1,3 +1,3 @@
 export const SET_NICK_PLAYER = 'player/setNickname';
-export const SET_SCORE_PLAYER = 'player/setScore';
-export const CLEAR_SCORE_PLAYER = 'player/clearScore';
+export const SET_TIME_PLAYER = 'player/setTime';
+export const CLEAR_TIME_PLAYER = 'player/clearScore';

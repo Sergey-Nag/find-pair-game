@@ -9,34 +9,34 @@ import {
 const initialState = {
   list: [
     {
-      id: 1,
+      id: '1',
       nickname: 'Username',
-      time: 1327536135417,
+      time: 60000,
     },
     {
-      id: 3,
+      id: '3',
       nickname: 'nick',
-      time: 1327536265417,
+      time: 90000,
     },
     {
-      id: 2,
+      id: '2',
       nickname: 'user',
-      time: 1327536140417,
+      time: 95000,
     },
     {
-      id: 4,
+      id: '4',
       nickname: 'nickName',
-      time: 1327536161417,
+      time: 108000,
     },
     {
-      id: 5,
+      id: '5',
       nickname: '_nickname_123',
-      time: 1327536177417,
+      time: 119000,
     },
     {
-      id: 6,
+      id: '6',
       nickname: 'asd',
-      time: 1327536196417,
+      time: 132000,
     },
   ],
   isLoading: false,
