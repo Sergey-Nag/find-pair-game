@@ -1,42 +1,68 @@
 import React, { useCallback } from 'react';
+import { useSelector } from 'react-redux';
 import './Leaderboard.scss';
+import { formatGameTime } from '../../utils/helpers';
 
-function Leaderboard({ leaders }) {
+function Leaderboard({ inGame }) {
+  const leaderboard = useSelector((state) => state.leaderboard);
+
   const returnGameTime = useCallback((ms) => {
     const min = new Date(ms).getMinutes();
     const sec = new Date(ms).getSeconds();
 
-    return `${min < 10 ? '0' : ''}${min}:${sec}`;
+    return formatGameTime(min, sec);
   }, []);
 
-  const returnSortedArr = useCallback(() => [...leaders].sort((a, b) => a.time - b.time),
-    [leaders]);
+  const returnSortedArr = useCallback(() => {
+    const copiedLeaders = [...leaderboard.list];
+
+    if (inGame) {
+      const playerObj = {
+        id: 'player',
+        nickname: 'test',
+        time: 0,
+        // time: 1327536161417,
+        isPlayer: true,
+      };
+
+      copiedLeaders.push(playerObj);
+    }
+
+    return copiedLeaders.sort((a, b) => a.time - b.time);
+  }, [leaderboard.list, inGame]);
 
   return (
-    <table className="leaderboard">
-      <thead className="leaderboard__head">
-        <tr>
-          <td className="leaderboard__col leaderboard__col_header leaderboard__col_width_sm">
+    <div className="leaderboard">
+      <div className="leaderboard__head">
+        <div className="leaderboard__row">
+          <div className="leaderboard__col leaderboard__col_header">
             №
-          </td>
-          <td className="leaderboard__col leaderboard__col_header">Nickname</td>
-          <td className="leaderboard__col leaderboard__col_header leaderboard__col_text_right">
+          </div>
+          <div className="leaderboard__col leaderboard__col_header">Nickname</div>
+          <div className="leaderboard__col leaderboard__col_header leaderboard__col_text_right">
             Time
-          </td>
-        </tr>
-      </thead>
-      <tbody className="leaderboard__body">
-        {returnSortedArr().map(({ id, nickname, time }) => (
-          <tr className="leaderboard__row" key={id}>
-            <td className="leaderboard__col" />
-            <td className="leaderboard__col">{nickname}</td>
-            <td className="leaderboard__col leaderboard__col_text_right">
+          </div>
+        </div>
+      </div>
+      <div className={`leaderboard__body ${inGame ? '' : 'leaderboard__body_top-players'}`}>
+        {returnSortedArr().map(({
+          id, nickname, time, isPlayer,
+        }) => (
+          <div
+            className={
+              `leaderboard__row ${(inGame && isPlayer) ? 'leaderboard__row_player' : ''}`
+            }
+            key={id}
+          >
+            <div className={`leaderboard__col ${(inGame && isPlayer && time === 0) ? 'leaderboard__col_no-counter' : ''}`} />
+            <div className="leaderboard__col">{nickname}</div>
+            <div className="leaderboard__col leaderboard__col_text_right">
               {returnGameTime(time)}
-            </td>
-          </tr>
+            </div>
+          </div>
         ))}
-      </tbody>
-    </table>
+      </div>
+    </div>
   );
 }
 

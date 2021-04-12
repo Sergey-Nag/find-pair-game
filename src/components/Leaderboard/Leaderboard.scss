@@ -1,24 +1,30 @@
-@import '/src/assets/scss/_variables.scss';
+@import '/src/assets/scss/variables';
+@import '/src/assets/scss/mixins';
 
 .leaderboard {
   width: 100%;
-  border-spacing: 0;
   counter-reset: place;
 
-
   &__row {
-    
-    .leaderboard__col:first-child {
+    @extend %grid;
+    grid-template-columns: 40px 1fr 80px;
+
+    .leaderboard__col:not(.leaderboard__col_header):first-child {
       &::before {
         counter-increment: place;
         content: counter(place);
       }
     }
-  
-    &:first-child {
-      .leaderboard__col {
-        padding-top: 6px;
-        border-top: solid $leaderboard_header_padding white;
+    
+    &_player {
+      padding: 5px 0;
+      font-weight: bold;
+
+      .leaderboard__col_no-counter:not(.leaderboard__col_header):first-child {
+        &::before {
+          counter-reset: place;
+          content: '...';
+        }
       }
     }
   }
@@ -31,12 +37,6 @@
       border-bottom: solid 1px black;
     }
 
-    &_width {
-      &_sm {
-        width: $leaderboard_col_width_sm;
-      }
-    }
-
     &_text {
       &_right {
         text-align: right;
@@ -44,15 +44,48 @@
     }
   }
 
+  &__head {
+    .leaderboard__col:last-child {
+      padding-right: 15px;
+    }
+  }
+
   &__body {
-    .leaderboard__row:nth-child(1) {
-      background: $color_gold;
+    padding-top: $leaderboard_header_padding;
+    overflow-y: scroll;
+    max-height: 50vh;
+
+    &_top-players {
+      height: 25vh;
+
+      .leaderboard__row:nth-child(1) {
+        background: $color_gold;
+      }
+      .leaderboard__row:nth-child(2) {
+        background: $color_silver;
+      }
+      .leaderboard__row:nth-child(3) {
+        background: $color_bronze;
+      }
     }
-    .leaderboard__row:nth-child(2) {
-      background: $color_silver;
+        
+    &::-webkit-scrollbar {
+      width: 5px;
     }
-    .leaderboard__row:nth-child(3) {
-      background: $color_bronze;
+
+    &:hover {
+      &::-webkit-scrollbar-thumb {
+        background: rgba(136, 136, 136, 0.4);
+      }
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(136, 136, 136, 0);
+      border-radius: 4px;
+      
+      &:hover {
+        background: rgba(136, 136, 136, 0.9);
+      }
     }
   }
 }

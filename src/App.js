@@ -1,10 +1,26 @@
 import React from 'react';
-import Modal from './components/Modal';
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom';
+import Gamepage from './pages/Gamepage';
+import Homepage from './pages/Homepage';
 
 function App() {
   return (
     <div className="App">
-      <Modal isGameOver score="1585" />
+      <Router basename={process.env.PUBLIC_URL}>
+        <Switch>
+          <Route exact path="/">
+            <Homepage />
+          </Route>
+          <Route exact path="/game">
+            <Gamepage />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }

@@ -31,6 +31,7 @@
     @extend %inline-block;
     text-transform: capitalize;
     width: 60%;
+    letter-spacing: $letter_spacing;
   }
 
   &__time {
