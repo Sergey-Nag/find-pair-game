@@ -1,0 +1,16 @@
+.loader {
+  height: 20px;
+  width: 100%;
+  background-color: #e3e3e3;
+  position: relative;
+  &__line {
+    position: absolute;
+    height: 20px;
+    background-color: #6d6d6d;
+    border-radius: 0px 50px 50px 0px;
+    transition: 0.5s;
+  }
+  &__countdown {
+    background-color: #ff4040;
+  }
+}
