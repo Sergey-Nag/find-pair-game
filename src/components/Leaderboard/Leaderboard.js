@@ -1,7 +1,12 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import './Leaderboard.scss';
-import { formatGameTime, getMinutesFromMs, getSecondsFromMs } from '../../utils/helpers';
+import {
+  formatGameTime,
+  getMinutesFromMs,
+  getSecondsFromMs,
+  isPlayerPositionOnEndOfBlock,
+} from '../../utils/helpers';
 
 function Leaderboard({ inGame }) {
   const leaderboard = useSelector((state) => state.leaderboard);
@@ -33,12 +38,15 @@ function Leaderboard({ inGame }) {
     if (!inGame && player.time < 1) return;
 
     const containerHeight = tableScroll.current.clientHeight;
-    const playerPosition = tableScroll.current.querySelector('.leaderboard__row_player').offsetTop;
-
-    console.log(containerHeight, playerPosition);
-    console.log(5);
-
-    tableScroll.current.scrollTo(0, playerPosition);
+    const playerBlock = tableScroll.current.querySelector('.leaderboard__row_player');
+    const playerHeight = playerBlock.clientHeight;
+    const playerPosTop = playerBlock.offsetTop;
+    if (isPlayerPositionOnEndOfBlock(playerBlock, containerHeight - playerHeight)) {
+      tableScroll.current.scrollTo(
+        0,
+        playerPosTop - containerHeight + playerHeight * 2,
+      );
+    }
   }, [inGame, player]);
 
   return (

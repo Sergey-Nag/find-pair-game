@@ -7,10 +7,10 @@ import {
 } from './leaderboardTypes';
 
 const initialState = {
-  list: [...new Array(20)].map((e, i) => ({
+  list: [...new Array(50)].map((e, i) => ({
     id: i,
     nickname: `Username ${i}`,
-    time: 3000 + (i * 5000),
+    time: 3000 + (i * 1000),
   })),
   isLoading: false,
   isLoaded: false,
