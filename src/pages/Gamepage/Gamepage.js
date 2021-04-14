@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Button from '../../components/Button';
 import GameInfo from '../../components/GameInfo';
 import Leaderboard from '../../components/Leaderboard';
+import Loader from '../../components/Loader/Loader';
 import Playground from '../../components/Playground';
 import { PAUSE_GAME, START_GAME } from '../../store/game/gameTypes';
 import { SET_NICK_PLAYER } from '../../store/player/playerTypes';
@@ -35,7 +36,9 @@ function Gamepage() {
           level={gamemode}
         />
       </div>
-      <div className="game__loader" />
+      <div className="game__loader">
+        <Loader width="50" />
+      </div>
     </div>
   );
 }
