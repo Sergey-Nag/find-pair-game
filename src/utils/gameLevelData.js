@@ -5,18 +5,21 @@ import hardImage from '../assets/img/gamemode-images/hard.svg';
 const gameLevelData = {
   easy: {
     img: easyImage,
-    time: '01:00',
+    time: [1, 0],
     layout: '4x4',
+    remeberTime: [0, 10],
   },
   medium: {
     img: mediumImage,
-    time: '02:20',
+    time: [2, 20],
     layout: '8x8',
+    remeberTime: [0, 30],
   },
   hard: {
     img: hardImage,
-    time: '03:50',
+    time: [3, 50],
     layout: '14x10',
+    remeberTime: [0, 50],
   },
 };
 

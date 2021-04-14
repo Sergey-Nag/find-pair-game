@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import './Leaderboard.scss';
 import { formatGameTime, getMinutesFromMs, getSecondsFromMs } from '../../utils/helpers';
@@ -6,6 +6,7 @@ import { formatGameTime, getMinutesFromMs, getSecondsFromMs } from '../../utils/
 function Leaderboard({ inGame }) {
   const leaderboard = useSelector((state) => state.leaderboard);
   const player = useSelector((state) => state.player);
+  const tableScroll = useRef(null);
 
   const returnGameTime = useCallback((ms) => {
     const min = getMinutesFromMs(ms);
@@ -28,6 +29,18 @@ function Leaderboard({ inGame }) {
     return copiedLeaders.sort((a, b) => a.time - b.time);
   }, [leaderboard.list, inGame, player]);
 
+  useEffect(() => {
+    if (!inGame && player.time < 1) return;
+
+    const containerHeight = tableScroll.current.clientHeight;
+    const playerPosition = tableScroll.current.querySelector('.leaderboard__row_player').offsetTop;
+
+    console.log(containerHeight, playerPosition);
+    console.log(5);
+
+    tableScroll.current.scrollTo(0, playerPosition);
+  }, [inGame, player]);
+
   return (
     <div className="leaderboard">
       <div className="leaderboard__head">
@@ -41,7 +54,7 @@ function Leaderboard({ inGame }) {
           </div>
         </div>
       </div>
-      <div className={`leaderboard__body ${inGame ? '' : 'leaderboard__body_top-players'}`}>
+      <div ref={tableScroll} className={`leaderboard__body ${inGame ? '' : 'leaderboard__body_top-players'}`}>
         {returnSortedArr().map(({
           id, nickname, time,
         }) => (
