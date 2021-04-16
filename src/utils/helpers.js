@@ -11,9 +11,16 @@ const getMillisecondsFromGameTime = (min, sec) => {
   return time.valueOf();
 };
 
+const isPlayerPositionOnEndOfBlock = (playerBlock, containerheight) => {
+  const { clientHeight, offsetTop } = playerBlock;
+
+  return (offsetTop + clientHeight) > containerheight;
+};
+
 export {
   formatGameTime,
   getMillisecondsFromGameTime,
   getMinutesFromMs,
   getSecondsFromMs,
+  isPlayerPositionOnEndOfBlock,
 };

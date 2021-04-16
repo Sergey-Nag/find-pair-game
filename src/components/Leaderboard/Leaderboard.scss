@@ -54,6 +54,7 @@
     padding-top: $leaderboard_header_padding;
     overflow-y: scroll;
     max-height: 50vh;
+    position: relative;
 
     &_top-players {
       height: 25vh;

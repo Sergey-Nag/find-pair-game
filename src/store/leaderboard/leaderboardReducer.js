@@ -7,38 +7,11 @@ import {
 } from './leaderboardTypes';
 
 const initialState = {
-  list: [
-    {
-      id: '1',
-      nickname: 'Username',
-      time: 60000,
-    },
-    {
-      id: '3',
-      nickname: 'nick',
-      time: 90000,
-    },
-    {
-      id: '2',
-      nickname: 'user',
-      time: 95000,
-    },
-    {
-      id: '4',
-      nickname: 'nickName',
-      time: 108000,
-    },
-    {
-      id: '5',
-      nickname: '_nickname_123',
-      time: 119000,
-    },
-    {
-      id: '6',
-      nickname: 'asd',
-      time: 132000,
-    },
-  ],
+  list: [...new Array(50)].map((e, i) => ({
+    id: i,
+    nickname: `Username ${i}`,
+    time: 3000 + (i * 1000),
+  })),
   isLoading: false,
   isLoaded: false,
   isError: false,
