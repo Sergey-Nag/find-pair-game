@@ -2,9 +2,10 @@ import React from 'react';
 import './Modal.scss';
 import Button from '../Button';
 import gameOverImage from '../../assets/img/modal-images/game-over.svg';
+import pauseImage from '../../assets/img/modal-images/pause.svg';
 
 function Modal({
-  isLogin, isCancel, isGameOver, score,
+  isLogin, isCancel, isGameOver, isPause, score,
 }) {
   return (
     <div className="modal">
@@ -80,6 +81,18 @@ function Modal({
               <Button variant="primary">Play</Button>
             </div>
           </div>
+        </div>
+      )}
+
+      {isPause && (
+        <div className="modal__wrapper">
+          <div className="modal__container">
+            <img className="modal__image" src={pauseImage} alt="pause" />
+            <p className="modal__content">
+              Press &quot;ESC&quot; to continue
+            </p>
+          </div>
+
         </div>
       )}
     </div>
