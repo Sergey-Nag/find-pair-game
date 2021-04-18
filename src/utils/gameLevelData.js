@@ -7,19 +7,19 @@ const gameLevelData = {
     img: easyImage,
     time: [1, 0],
     layout: '4x4',
-    remeberTime: [0, 10],
+    rememberTime: [0, 10],
   },
   medium: {
     img: mediumImage,
     time: [2, 20],
     layout: '8x8',
-    remeberTime: [0, 30],
+    rememberTime: [0, 30],
   },
   hard: {
     img: hardImage,
     time: [3, 50],
     layout: '14x10',
-    remeberTime: [0, 50],
+    rememberTime: [0, 50],
   },
 };
 
