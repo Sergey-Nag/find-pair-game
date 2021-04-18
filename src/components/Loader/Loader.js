@@ -15,7 +15,7 @@ function Loader() {
   return (
     <div className="loader">
       <div
-        className="loader__line loader__countdown"
+        className="loader__line "
         style={{ width: `${percent}%` }}
       />
     </div>
