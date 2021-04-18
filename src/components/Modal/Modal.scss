@@ -1,3 +1,5 @@
+@import '../../assets/scss/variables';
+
 .modal {
   position: fixed;
   top: 0;
@@ -39,6 +41,8 @@
     max-width: 280px;
   }
   &__content {
+    display: flex;
+    align-items: center;
     margin-top: 20px;
     font-size: 22px;
     text-align: center;
@@ -46,6 +50,7 @@
   &__score {
     color: #ff4040;
     font-weight: 700;
+    margin-left: 10px;
   }
   &__form {
     margin-top: 20px;
@@ -62,11 +67,20 @@
     border-radius: 5px;
     outline: none;
     border: none;
-    transition: all 0.5s;
-    filter: drop-shadow(0px 3px 0px rgba(0, 0, 0, 0.25));
+    transition: all 0.2s;
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.25);
+    &::placeholder {
+      color: $color_secondary;
+      transition: all 0.2s;
+    }
     &:focus {
-      transform: translateY(0.5px);
-      filter: drop-shadow(0px 2px 0px rgba(79, 183, 206, 0.25));
+      box-shadow: 0 3px 0 $color_primary;
+      &::placeholder {
+        color: lighten($color_secondary, 20%);
+      }
+    }
+    &_invalid {
+      box-shadow: 0 3px 0 $color_danger;
     }
   }
 
@@ -79,5 +93,83 @@
     font-size: 16px;
     text-align: center;
     margin-bottom: 25px;
+  }
+
+  &__pause {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+    transition: 0.5s;
+    &::before,
+    &::after {
+      content: '';
+      border-radius: 10px;
+      position: absolute;
+      width: 100%;
+      height: 15px;
+      background-color: #000;
+      transition: 0.4s;
+    }
+    &::before {
+      top: 33px;
+      transform: rotate(90deg);
+      right: 25%;
+      top: 45%;
+    }
+    &::after {
+      bottom: 33px;
+      transform: rotate(-90deg);
+      left: 25%;
+      bottom: 45%;
+    }
+    &.active::before {
+      top: 33px;
+      right: 0;
+      transform: rotate(30deg);
+    }
+    &.active::after {
+      bottom: 33px;
+      left: 0;
+      transform: rotate(-30deg);
+    }
+  }
+  &__pause-item {
+    transition: all 0.5s;
+    display: none;
+    transform: rotate(90deg);
+    bottom: 45%;
+    left: -39%;
+    border-radius: 10px;
+    position: absolute;
+    width: 100%;
+    height: 15px;
+    background-color: #000;
+  }
+  &__escape-wr {
+    margin: 0 15px;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid #000;
+    background: linear-gradient(
+      90deg,
+      rgba(231, 231, 229, 1) 0%,
+      rgba(178, 178, 178, 1) 35%,
+      rgba(190, 190, 190, 1) 100%
+    );
+  }
+
+  &__escape {
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #f1f1f1;
+    border: 1px solid #000;
   }
 }
