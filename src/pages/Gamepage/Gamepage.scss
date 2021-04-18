@@ -9,9 +9,9 @@
                  "loader loader loader" 20px 
                  / 400px 1fr 1fr;
   grid-column-gap: 60px;
-  padding: 0 60px;
 
   &__interface {
+    padding-left: 60px;
     grid-area: interface;
     & > div {
       margin-bottom: 50px;
@@ -19,7 +19,7 @@
   }
   &__playground {
     grid-area: playground;
-    padding: 40px 0;
+    padding: 40px 60px 40px 0;
   }
   &__loader {
     grid-area: loader;
