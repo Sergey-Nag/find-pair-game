@@ -17,10 +17,18 @@ const isPlayerPositionOnEndOfBlock = (playerBlock, containerheight) => {
   return (offsetTop + clientHeight) > containerheight;
 };
 
+const isNicknameValid = (value) => {
+  const isCorrectlength = value.length > 2 && value.length < 25;
+  const isCorrectSymbols = !/(')|(")|(`)|(\/)|(\\)|(:)|(;)|(~)|({)|(})|(\()|(\))|(\[)|(\])|(\|)|(,)|(\*)/g.test(value);
+
+  return isCorrectlength && isCorrectSymbols;
+};
+
 export {
   formatGameTime,
   getMillisecondsFromGameTime,
   getMinutesFromMs,
   getSecondsFromMs,
   isPlayerPositionOnEndOfBlock,
+  isNicknameValid,
 };

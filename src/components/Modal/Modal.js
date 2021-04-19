@@ -1,7 +1,7 @@
 import React from 'react';
 import './Modal.scss';
 
-import Login from './loginModal';
+import LoginModal from './LoginModal';
 import GameOver from './gameOverModal';
 import Cancel from './cancelModal';
 import Pause from './pauseModal';
@@ -12,7 +12,7 @@ function Modal({
   if (isLogin) {
     return (
       <div className="modal">
-        <Login />
+        <LoginModal />
       </div>
     );
   }

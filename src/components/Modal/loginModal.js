@@ -1,7 +1,41 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { SET_NICK_PLAYER } from '../../store/player/playerTypes';
+import {
+  getMillisecondsFromGameTime,
+  getSecondsFromMs,
+  isNicknameValid,
+} from '../../utils/helpers';
+import gameLevelData from '../../utils/gameLevelData';
 import Button from '../Button';
 
-function Login() {
+function LoginModal() {
+  const player = useSelector((state) => state.player);
+  const gamemode = useSelector((state) => state.gamemode);
+  const [inputValue, setInputValue] = useState('');
+  const [isInputValid, setInputValid] = useState(true);
+  const [isStartTyping, setStartTyping] = useState(false);
+  const [timeToRemember, setTimeToRemember] = useState(0);
+  const dispatch = useDispatch();
+
+  const setNickname = useCallback(({ target }) => {
+    const { value } = target;
+
+    setInputValue(value);
+    if (value.trim().length > 2) setStartTyping(true);
+
+    if (!isStartTyping) return;
+
+    if (isNicknameValid(value)) setInputValid(true);
+    else setInputValid(false);
+  }, [isStartTyping]);
+
+  useEffect(() => {
+    const msToRemember = gameLevelData[gamemode].rememberTime[1] * 1000;
+    const sec = getSecondsFromMs(msToRemember);
+    setTimeToRemember(sec);
+  }, [gamemode]);
+
   return (
     <div className="modal__wrapper">
       <div className="modal__container">
@@ -12,7 +46,11 @@ function Login() {
             your results.
           </li>
           <li className="modal__item">
-            You have N seconds to remember all cards, before they are all
+            You have
+            {' '}
+            <b>{timeToRemember}</b>
+            {' '}
+            seconds to remember all cards, before they are all
             roll over.
           </li>
           <li className="modal__item">
@@ -29,8 +67,10 @@ function Login() {
         <h4 className="modal__title">Nickname</h4>
         <form className="modal__form">
           <input
-            className="modal__input"
+            className={`modal__input${isInputValid ? '' : ' modal__input_invalid'}`}
             placeholder="Enter your nickname"
+            onChange={setNickname}
+            value={inputValue}
           />
           <div className="modal__button-wrapper">
             <Button variant="secondary">Cancel</Button>
@@ -42,4 +82,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default LoginModal;

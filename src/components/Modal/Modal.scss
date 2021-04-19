@@ -79,7 +79,8 @@
         color: lighten($color_secondary, 20%);
       }
     }
-    &_invalid {
+    &_invalid,
+    &_invalid:focus {
       box-shadow: 0 3px 0 $color_danger;
     }
   }
