@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/find-pair-game/static/css/main.94e51b96.chunk.css",
-    "main.js": "/find-pair-game/static/js/main.175556a9.chunk.js",
-    "main.js.map": "/find-pair-game/static/js/main.175556a9.chunk.js.map",
+    "main.js": "/find-pair-game/static/js/main.8d966800.chunk.js",
+    "main.js.map": "/find-pair-game/static/js/main.8d966800.chunk.js.map",
     "runtime-main.js": "/find-pair-game/static/js/runtime-main.51db2732.js",
     "runtime-main.js.map": "/find-pair-game/static/js/runtime-main.51db2732.js.map",
-    "static/js/2.3ca64467.chunk.js": "/find-pair-game/static/js/2.3ca64467.chunk.js",
-    "static/js/2.3ca64467.chunk.js.map": "/find-pair-game/static/js/2.3ca64467.chunk.js.map",
+    "static/js/2.ac32a7b9.chunk.js": "/find-pair-game/static/js/2.ac32a7b9.chunk.js",
+    "static/js/2.ac32a7b9.chunk.js.map": "/find-pair-game/static/js/2.ac32a7b9.chunk.js.map",
     "index.html": "/find-pair-game/index.html",
     "static/css/main.94e51b96.chunk.css.map": "/find-pair-game/static/css/main.94e51b96.chunk.css.map",
-    "static/js/2.3ca64467.chunk.js.LICENSE.txt": "/find-pair-game/static/js/2.3ca64467.chunk.js.LICENSE.txt",
+    "static/js/2.ac32a7b9.chunk.js.LICENSE.txt": "/find-pair-game/static/js/2.ac32a7b9.chunk.js.LICENSE.txt",
     "static/media/acer.97b43230.svg": "/find-pair-game/static/media/acer.97b43230.svg",
     "static/media/android.5cea2350.svg": "/find-pair-game/static/media/android.5cea2350.svg",
     "static/media/apple.e8c87215.svg": "/find-pair-game/static/media/apple.e8c87215.svg",
@@ -29,8 +29,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.51db2732.js",
-    "static/js/2.3ca64467.chunk.js",
+    "static/js/2.ac32a7b9.chunk.js",
     "static/css/main.94e51b96.chunk.css",
-    "static/js/main.175556a9.chunk.js"
+    "static/js/main.8d966800.chunk.js"
   ]
 }
