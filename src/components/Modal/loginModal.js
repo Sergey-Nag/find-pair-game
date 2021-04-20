@@ -7,9 +7,10 @@ import {
 } from '../../utils/helpers';
 import gameLevelData from '../../utils/gameLevelData';
 import Button from '../Button';
+import { setNicknameToStore } from '../../store/player/playerActions';
 
 function LoginModal() {
-  const player = useSelector((state) => state.player);
+  // const player = useSelector((state) => state.player);
   const gamemode = useSelector((state) => state.gamemode);
   const [inputValue, setInputValue] = useState('');
   const [isInputValid, setInputValid] = useState(true);
@@ -18,7 +19,7 @@ function LoginModal() {
   const dispatch = useDispatch();
 
   const setNickname = useCallback(({ target }) => {
-    const value = target.value.trim();
+    const { value } = target;
 
     setInputValue(value);
     if (value.length > 2) setStartTyping(true);
@@ -28,6 +29,19 @@ function LoginModal() {
     if (isNicknameValid(value)) setInputValid(true);
     else setInputValid(false);
   }, [isStartTyping]);
+
+  const nicknameSubmit = useCallback((e) => {
+    e.preventDefault();
+
+    setStartTyping(true);
+
+    if (isNicknameValid(inputValue)) setInputValid(true);
+    else setInputValid(false);
+
+    if (isInputValid) {
+      dispatch(setNicknameToStore(inputValue.trim()));
+    }
+  }, [isInputValid, inputValue, dispatch]);
 
   useEffect(() => {
     const msToRemember = gameLevelData[gamemode].rememberTime[1] * 1000;
@@ -64,16 +78,17 @@ function LoginModal() {
       </div>
       <div className="modal__container">
         <h4 className="modal__title">Nickname</h4>
-        <form className="modal__form">
+        <form className="modal__form" onSubmit={nicknameSubmit}>
           <input
             className={`modal__input${isInputValid ? '' : ' modal__input_invalid'}`}
             placeholder="Enter your nickname"
             onChange={setNickname}
             value={inputValue}
+            spellCheck="false"
           />
           <div className="modal__button-wrapper">
             <Button variant="secondary">Cancel</Button>
-            <Button variant="primary">Continue</Button>
+            <Button variant="primary" type="submit">Continue</Button>
           </div>
         </form>
       </div>
