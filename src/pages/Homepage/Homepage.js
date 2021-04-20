@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Leaderboard from '../../components/Leaderboard';
 import GameLevelCard from '../../components/GameLevelCard';
 import Button from '../../components/Button';
@@ -43,7 +44,11 @@ function Homepage() {
         />
       </div>
       <div className="homepage__button-wrapper">
-        <Button variant="large">Play</Button>
+        <Link to="/game">
+          <Button variant="large">
+            Play
+          </Button>
+        </Link>
       </div>
     </div>
   );
