@@ -29,7 +29,7 @@ function Homepage() {
     <div className="homepage">
       <div className="homepage__leaderboard-wrapper">
         <h1 className="homepage__title">Leaderboard</h1>
-        <Leaderboard leaders={leaderboard.list} />
+        <Leaderboard leaders={leaderboard.list} inGame={false} />
       </div>
       <h3 className="homepage__subtitle">Select the grid size</h3>
       <div className="homepage__level-wrapper">

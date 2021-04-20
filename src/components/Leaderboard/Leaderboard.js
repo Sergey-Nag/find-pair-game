@@ -35,7 +35,7 @@ function Leaderboard({ inGame }) {
   }, [leaderboard.list, inGame, player]);
 
   useEffect(() => {
-    if (!inGame && player.time < 1) return;
+    if (!inGame) return;
 
     const containerHeight = tableScroll.current.clientHeight;
     const playerBlock = tableScroll.current.querySelector('.leaderboard__row_player');
