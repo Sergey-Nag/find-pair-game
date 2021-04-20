@@ -1,8 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { SET_NICK_PLAYER } from '../../store/player/playerTypes';
+// import { SET_NICK_PLAYER } from '../../store/player/playerTypes';
 import {
-  getMillisecondsFromGameTime,
   getSecondsFromMs,
   isNicknameValid,
 } from '../../utils/helpers';
@@ -19,10 +18,10 @@ function LoginModal() {
   const dispatch = useDispatch();
 
   const setNickname = useCallback(({ target }) => {
-    const { value } = target;
+    const value = target.value.trim();
 
     setInputValue(value);
-    if (value.trim().length > 2) setStartTyping(true);
+    if (value.length > 2) setStartTyping(true);
 
     if (!isStartTyping) return;
 

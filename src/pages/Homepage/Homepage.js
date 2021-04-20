@@ -1,10 +1,11 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Leaderboard from '../../components/Leaderboard';
 import GameLevelCard from '../../components/GameLevelCard';
 import Button from '../../components/Button';
 import './Homepage.scss';
 import GAMEMODE_CHANGE from '../../store/gamemode/gamemodeTypes';
+import { CLEAR_TIME_PLAYER } from '../../store/player/playerTypes';
 
 function Homepage() {
   const leaderboard = useSelector((state) => state.leaderboard);
@@ -15,6 +16,12 @@ function Homepage() {
     dispatch({
       type: GAMEMODE_CHANGE,
       payload: level,
+    });
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch({
+      type: CLEAR_TIME_PLAYER,
     });
   }, [dispatch]);
 
