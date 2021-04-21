@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Button from '../Button';
 
 function Login() {
@@ -33,7 +34,11 @@ function Login() {
             placeholder="Enter your nickname"
           />
           <div className="modal__button-wrapper">
-            <Button variant="secondary">Cancel</Button>
+            <Link to="/">
+              <Button variant="secondary">
+                Cancel
+              </Button>
+            </Link>
             <Button variant="primary">Continue</Button>
           </div>
         </form>
