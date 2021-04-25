@@ -8,9 +8,9 @@ import {
 import gameLevelData from '../../utils/gameLevelData';
 import Button from '../Button';
 import { setNicknameToStore } from '../../store/player/playerActions';
+import { START_REMEMBER } from '../../store/game/gameTypes';
 
 function LoginModal() {
-  // const player = useSelector((state) => state.player);
   const gamemode = useSelector((state) => state.gamemode);
   const [inputValue, setInputValue] = useState('');
   const [isInputValid, setInputValid] = useState(true);
@@ -39,15 +39,26 @@ function LoginModal() {
 
   const nicknameSubmit = useCallback((e) => {
     e.preventDefault();
-    const { isCorrectlength, isCorrectSymbol } = createNicknameValid(inputValue);
+    const { isCorrectlength, isCorrectSymbol, isNotEmpty } = createNicknameValid(inputValue.trim());
 
     setStartTyping(true);
+    console.log(inputValue, isCorrectlength(), isCorrectSymbol());
 
-    if (isCorrectlength() && isCorrectSymbol()) setInputValid(true);
-    else setInputValid(false);
+    if (!isNotEmpty()) {
+      setInputValid(false);
+      setTipText('Nickname is required');
+    } else if (isCorrectlength() && isCorrectSymbol() && isNotEmpty()) {
+      setInputValid(true);
+      console.log('true?', isCorrectlength() && isCorrectSymbol());
+    } else setInputValid(false);
 
     if (isInputValid) {
+      console.log('true?', isCorrectlength() && isCorrectSymbol());
       dispatch(setNicknameToStore(inputValue.trim()));
+      dispatch({
+        type: START_REMEMBER,
+      });
+      console.log('START');
     }
   }, [isInputValid, inputValue, dispatch]);
 

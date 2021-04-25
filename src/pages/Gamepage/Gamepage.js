@@ -10,12 +10,13 @@ import Modal from '../../components/Modal';
 
 function Gamepage() {
   const gamemode = useSelector((state) => state.gamemode);
+  const nickname = useSelector((state) => state.player.nickname);
   const [isPlay, setPlay] = useState(false);
 
   console.log('render');
   return (
     <>
-      <Modal isLogin />
+      {!nickname && <Modal isLogin />}
       <div className="game">
         <div className="game__interface">
           <GameInfo />
@@ -32,7 +33,7 @@ function Gamepage() {
           />
         </div>
         <div className="game__loader">
-          <Loader width="50" />
+          <Loader />
         </div>
       </div>
     </>
