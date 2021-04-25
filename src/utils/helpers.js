@@ -17,12 +17,10 @@ const isPlayerPositionOnEndOfBlock = (playerBlock, containerheight) => {
   return (offsetTop + clientHeight) > containerheight;
 };
 
-const isNicknameValid = (value) => {
-  const isCorrectlength = value.length > 2 && value.length < 20;
-  const isCorrectSymbols = !/(')|(")|(`)|(\/)|(\\)|(:)|(;)|(~)|({)|(})|(\()|(\))|(\[)|(\])|(\|)|(,)|(\*)/g.test(value);
-
-  return isCorrectlength && isCorrectSymbols;
-};
+const createNicknameValid = (value) => ({
+  isCorrectlength: () => value.length > 2 && value.length < 20,
+  isCorrectSymbol: () => !/(')|(")|(`)|(\/)|(\\)|(:)|(;)|(~)|({)|(})|(\()|(\))|(\[)|(\])|(\|)|(,)|(\*)/g.test(value),
+});
 
 export {
   formatGameTime,
@@ -30,5 +28,5 @@ export {
   getMinutesFromMs,
   getSecondsFromMs,
   isPlayerPositionOnEndOfBlock,
-  isNicknameValid,
+  createNicknameValid,
 };

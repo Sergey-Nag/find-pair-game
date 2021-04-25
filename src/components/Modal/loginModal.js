@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 // import { SET_NICK_PLAYER } from '../../store/player/playerTypes';
 import {
   getSecondsFromMs,
-  isNicknameValid,
+  createNicknameValid,
 } from '../../utils/helpers';
 import gameLevelData from '../../utils/gameLevelData';
 import Button from '../Button';
@@ -16,26 +16,34 @@ function LoginModal() {
   const [isInputValid, setInputValid] = useState(true);
   const [isStartTyping, setStartTyping] = useState(false);
   const [timeToRemember, setTimeToRemember] = useState(0);
+  const [tipText, setTipText] = useState('');
   const dispatch = useDispatch();
 
   const setNickname = useCallback(({ target }) => {
     const { value } = target;
+    const { isCorrectlength, isCorrectSymbol } = createNicknameValid(value);
 
     setInputValue(value);
     if (value.length > 2) setStartTyping(true);
 
     if (!isStartTyping) return;
 
-    if (isNicknameValid(value)) setInputValid(true);
-    else setInputValid(false);
+    if (!isCorrectlength()) {
+      setInputValid(false);
+      setTipText('Length of nickname must contains 3-24 symbols');
+    } else if (!isCorrectSymbol()) {
+      setInputValid(false);
+      setTipText('Nickname contains incorrect symbols');
+    } else setInputValid(true);
   }, [isStartTyping]);
 
   const nicknameSubmit = useCallback((e) => {
     e.preventDefault();
+    const { isCorrectlength, isCorrectSymbol } = createNicknameValid(inputValue);
 
     setStartTyping(true);
 
-    if (isNicknameValid(inputValue)) setInputValid(true);
+    if (isCorrectlength() && isCorrectSymbol()) setInputValid(true);
     else setInputValid(false);
 
     if (isInputValid) {
@@ -91,6 +99,7 @@ function LoginModal() {
             <Button variant="primary" type="submit">Continue</Button>
           </div>
         </form>
+        {!isInputValid && <div className="modal__container modal__container_absolute"><p>{tipText}</p></div>}
       </div>
     </div>
   );
