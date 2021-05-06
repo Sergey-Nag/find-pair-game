@@ -78,13 +78,13 @@ const useCountdownTimer = ([min, sec], interval) => {
     if (isOver) {
       stopTimer();
       if (callbacks.finished && isTimeIsZero) callbacks.finished();
-      return;
+      return false;
     }
 
     if (isPlaying) startTimer();
     else stopTimer();
 
-    // return () => stopTimer();
+    return () => stopTimer();
   }, [
     isOver,
     isReset,

@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Leaderboard from '../../components/Leaderboard';
@@ -6,6 +6,7 @@ import GameLevelCard from '../../components/GameLevelCard';
 import Button from '../../components/Button';
 import './Homepage.scss';
 import GAMEMODE_CHANGE from '../../store/gamemode/gamemodeTypes';
+import { CLEAR_TIME_PLAYER } from '../../store/player/playerTypes';
 
 function Homepage() {
   const leaderboard = useSelector((state) => state.leaderboard);
@@ -19,11 +20,17 @@ function Homepage() {
     });
   }, [dispatch]);
 
+  useEffect(() => {
+    dispatch({
+      type: CLEAR_TIME_PLAYER,
+    });
+  }, [dispatch]);
+
   return (
     <div className="homepage">
       <div className="homepage__leaderboard-wrapper">
         <h1 className="homepage__title">Leaderboard</h1>
-        <Leaderboard leaders={leaderboard.list} />
+        <Leaderboard leaders={leaderboard.list} inGame={false} />
       </div>
       <h3 className="homepage__subtitle">Select the grid size</h3>
       <div className="homepage__level-wrapper">

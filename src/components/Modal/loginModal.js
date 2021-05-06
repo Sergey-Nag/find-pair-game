@@ -1,7 +1,73 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import {
+  getSecondsFromMs,
+  createNicknameValid,
+} from '../../utils/helpers';
+import gameLevelData from '../../utils/gameLevelData';
 import Button from '../Button';
+import { setNicknameToStore } from '../../store/player/playerActions';
+import { START_REMEMBER } from '../../store/game/gameTypes';
 
-function Login() {
+function LoginModal() {
+  const gamemode = useSelector((state) => state.gamemode);
+  const [inputValue, setInputValue] = useState('');
+  const [isInputValid, setInputValid] = useState(true);
+  const [isStartTyping, setStartTyping] = useState(false);
+  const [timeToRemember, setTimeToRemember] = useState(0);
+  const [tipText, setTipText] = useState('');
+  const dispatch = useDispatch();
+
+  const setNickname = useCallback(({ target }) => {
+    const { value } = target;
+    const { isCorrectlength, isCorrectSymbol } = createNicknameValid(value);
+
+    setInputValue(value);
+    if (value.length > 2) setStartTyping(true);
+
+    if (!isStartTyping) return;
+
+    if (!isCorrectlength()) {
+      setInputValid(false);
+      setTipText('Length of nickname must contains 3-24 symbols');
+    } else if (!isCorrectSymbol()) {
+      setInputValid(false);
+      setTipText('Nickname contains incorrect symbols');
+    } else setInputValid(true);
+  }, [isStartTyping]);
+
+  const nicknameSubmit = useCallback((e) => {
+    e.preventDefault();
+    const { isCorrectlength, isCorrectSymbol, isNotEmpty } = createNicknameValid(inputValue.trim());
+
+    setStartTyping(true);
+    console.log(inputValue, isCorrectlength(), isCorrectSymbol());
+
+    if (!isNotEmpty()) {
+      setInputValid(false);
+      setTipText('Nickname is required');
+    } else if (isCorrectlength() && isCorrectSymbol() && isNotEmpty()) {
+      setInputValid(true);
+      console.log('true?', isCorrectlength() && isCorrectSymbol());
+    } else setInputValid(false);
+
+    if (isInputValid) {
+      console.log('true?', isCorrectlength() && isCorrectSymbol());
+      dispatch(setNicknameToStore(inputValue.trim()));
+      dispatch({
+        type: START_REMEMBER,
+      });
+      console.log('START');
+    }
+  }, [isInputValid, inputValue, dispatch]);
+
+  useEffect(() => {
+    const msToRemember = gameLevelData[gamemode].rememberTime[1] * 1000;
+    const sec = getSecondsFromMs(msToRemember);
+    setTimeToRemember(sec);
+  }, [gamemode]);
+
   return (
     <div className="modal__wrapper">
       <div className="modal__container">
@@ -12,7 +78,11 @@ function Login() {
             your results.
           </li>
           <li className="modal__item">
-            You have N seconds to remember all cards, before they are all
+            You have
+            {' '}
+            <b>{timeToRemember}</b>
+            {' '}
+            seconds to remember all cards, before they are all
             roll over.
           </li>
           <li className="modal__item">
@@ -27,19 +97,27 @@ function Login() {
       </div>
       <div className="modal__container">
         <h4 className="modal__title">Nickname</h4>
-        <form className="modal__form">
+        <form className="modal__form" onSubmit={nicknameSubmit}>
           <input
-            className="modal__input"
+            className={`modal__input${isInputValid ? '' : ' modal__input_invalid'}`}
             placeholder="Enter your nickname"
+            onChange={setNickname}
+            value={inputValue}
+            spellCheck="false"
           />
           <div className="modal__button-wrapper">
-            <Button variant="secondary">Cancel</Button>
-            <Button variant="primary">Continue</Button>
+            <Link to="/">
+              <Button variant="secondary">
+                Cancel
+              </Button>
+            </Link>
+            <Button variant="primary" type="submit">Continue</Button>
           </div>
         </form>
+        {!isInputValid && <div className="modal__container modal__container_absolute"><p>{tipText}</p></div>}
       </div>
     </div>
   );
 }
 
-export default Login;
+export default LoginModal;

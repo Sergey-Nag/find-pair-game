@@ -3,6 +3,7 @@ import {
   PAUSE_GAME,
   END_GAME,
   SET_TIME_GAME,
+  START_REMEMBER,
 } from './gameTypes';
 
 const initialState = {
@@ -15,6 +16,12 @@ const initialState = {
 
 function gameReducer(state = initialState, { type, payload }) {
   switch (type) {
+    case START_REMEMBER:
+      return {
+        ...state,
+        isStart: true,
+      };
+
     case START_GAME:
       return {
         ...state,
