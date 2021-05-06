@@ -11,30 +11,30 @@ function Loader() {
   const dispatch = useDispatch();
   const timer = useCountdownTimer(gameLevelData[gameMode].rememberTime, 1000);
   const game = useSelector((state) => state.game);
-  const { time, isStart } = game;
+  const { time, isStart, isPlaying } = game;
   const [percent, setPercent] = useState(0);
 
   useEffect(() => {
-    if (!isStart) {
+    if (isStart) {
       timer.start();
       timer.callbacks.finished = () => dispatch({ type: START_GAME });
     }
   }, [isStart, timer, dispatch]);
 
   useEffect(() => {
-    if (isStart) {
+    if (isPlaying) {
       const fullTime = getMillisecondsFromGameTime(2, 20);
       setPercent(100 / (fullTime / time));
-    } else {
+    } else if (isStart) {
       const fullTime = getMillisecondsFromGameTime(...gameLevelData[gameMode].rememberTime);
       setPercent(100 / (fullTime / (fullTime - timer.leftTime)));
     }
-  }, [time, gameMode, isStart, timer]);
+  }, [time, gameMode, isPlaying, isStart, timer]);
 
   return (
     <div className="loader">
       <div
-        className={`loader__line ${isStart ? 'loader__countdown' : ''}`}
+        className={`loader__line ${isPlaying ? 'loader__countdown' : ''}`}
         style={{ width: `${percent}%` }}
       />
     </div>
