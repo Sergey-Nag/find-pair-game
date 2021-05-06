@@ -1,7 +1,7 @@
 import React from 'react';
 import './Modal.scss';
 
-import LoginModal from './LoginModal';
+import LoginModal from './loginModal';
 import GameOver from './gameOverModal';
 import Cancel from './cancelModal';
 import Pause from './pauseModal';

@@ -10,6 +10,8 @@ import Button from '../Button';
 import { setNicknameToStore } from '../../store/player/playerActions';
 import { START_REMEMBER } from '../../store/game/gameTypes';
 
+// a
+
 function LoginModal() {
   const gamemode = useSelector((state) => state.gamemode);
   const [inputValue, setInputValue] = useState('');
