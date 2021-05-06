@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import { SET_NICK_PLAYER } from '../../store/player/playerTypes';
+import { Link } from 'react-router-dom';
 import {
   getSecondsFromMs,
   createNicknameValid,
@@ -106,7 +106,11 @@ function LoginModal() {
             spellCheck="false"
           />
           <div className="modal__button-wrapper">
-            <Button variant="secondary">Cancel</Button>
+            <Link to="/">
+              <Button variant="secondary">
+                Cancel
+              </Button>
+            </Link>
             <Button variant="primary" type="submit">Continue</Button>
           </div>
         </form>
