@@ -8,6 +8,7 @@ import gameLevelData from '../../utils/gameLevelData';
 import Button from '../Button';
 import useValidation from '../../hooks/useValidation';
 import { SET_NICK_PLAYER } from '../../store/player/playerTypes';
+import { START_REMEMBER } from '../../store/game/gameTypes';
 
 function LoginModal() {
   const gamemode = useSelector((state) => state.gamemode);
@@ -27,6 +28,9 @@ function LoginModal() {
     dispatch({
       type: SET_NICK_PLAYER,
       payload: inputValue.trim(),
+    });
+    dispatch({
+      type: START_REMEMBER,
     });
   }, [dispatch, isValid, inputValue]);
 

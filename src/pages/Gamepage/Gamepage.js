@@ -10,13 +10,12 @@ import Modal from '../../components/Modal';
 
 function Gamepage() {
   const gamemode = useSelector((state) => state.gamemode);
-  const nickname = useSelector((state) => state.player.nickname);
-  const [isPlay, setPlay] = useState(false);
+  const isStart = useSelector((state) => state.game.isStart);
 
   console.log('render');
   return (
     <>
-      {!nickname && <Modal isLogin />}
+      {!isStart && <Modal isLogin />}
       <div className="game">
         <div className="game__interface">
           <GameInfo />
@@ -24,7 +23,7 @@ function Gamepage() {
             <Leaderboard inGame />
           </div>
           <div className="game__button">
-            <Button variant="danger" clickHandler={() => setPlay(!isPlay)}>Surrender</Button>
+            <Button variant="danger">Surrender</Button>
           </div>
         </div>
         <div className="game__playground">

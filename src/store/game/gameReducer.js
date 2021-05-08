@@ -7,6 +7,7 @@ import {
 } from './gameTypes';
 
 const initialState = {
+  isRememberTime: false,
   isStart: false,
   isPlaying: false,
   isPause: false,
@@ -19,15 +20,16 @@ function gameReducer(state = initialState, { type, payload }) {
     case START_REMEMBER:
       return {
         ...state,
+        isRememberTime: true,
         isStart: true,
       };
 
     case START_GAME:
       return {
         ...state,
-        isStart: true,
         isPlaying: true,
         isPause: false,
+        isRememberTime: false,
       };
 
     case PAUSE_GAME:
