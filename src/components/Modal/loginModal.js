@@ -3,66 +3,28 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {
   getSecondsFromMs,
-  createNicknameValid,
 } from '../../utils/helpers';
 import gameLevelData from '../../utils/gameLevelData';
 import Button from '../Button';
-import { setNicknameToStore } from '../../store/player/playerActions';
-import { START_REMEMBER } from '../../store/game/gameTypes';
-
-// a
+import useValidation from '../../hooks/useValidation';
+import { SET_NICK_PLAYER } from '../../store/player/playerTypes';
 
 function LoginModal() {
   const gamemode = useSelector((state) => state.gamemode);
   const [inputValue, setInputValue] = useState('');
-  const [isInputValid, setInputValid] = useState(true);
-  const [isStartTyping, setStartTyping] = useState(false);
   const [timeToRemember, setTimeToRemember] = useState(0);
-  const [tipText, setTipText] = useState('');
+  const { isValid, tip } = useValidation(inputValue.trim());
   const dispatch = useDispatch();
-
-  const setNickname = useCallback(({ target }) => {
-    const { value } = target;
-    const { isCorrectlength, isCorrectSymbol } = createNicknameValid(value);
-
-    setInputValue(value);
-    if (value.length > 2) setStartTyping(true);
-
-    if (!isStartTyping) return;
-
-    if (!isCorrectlength()) {
-      setInputValid(false);
-      setTipText('Length of nickname must contains 3-24 symbols');
-    } else if (!isCorrectSymbol()) {
-      setInputValid(false);
-      setTipText('Nickname contains incorrect symbols');
-    } else setInputValid(true);
-  }, [isStartTyping]);
 
   const nicknameSubmit = useCallback((e) => {
     e.preventDefault();
-    const { isCorrectlength, isCorrectSymbol, isNotEmpty } = createNicknameValid(inputValue.trim());
+    if (!isValid) return;
 
-    setStartTyping(true);
-    console.log(inputValue, isCorrectlength(), isCorrectSymbol());
-
-    if (!isNotEmpty()) {
-      setInputValid(false);
-      setTipText('Nickname is required');
-    } else if (isCorrectlength() && isCorrectSymbol() && isNotEmpty()) {
-      setInputValid(true);
-      console.log('true?', isCorrectlength() && isCorrectSymbol());
-    } else setInputValid(false);
-
-    if (isInputValid) {
-      console.log('true?', isCorrectlength() && isCorrectSymbol());
-      dispatch(setNicknameToStore(inputValue.trim()));
-      dispatch({
-        type: START_REMEMBER,
-      });
-      console.log('START');
-    }
-  }, [isInputValid, inputValue, dispatch]);
+    dispatch({
+      type: SET_NICK_PLAYER,
+      payload: inputValue.trim(),
+    });
+  }, [dispatch, isValid, inputValue]);
 
   useEffect(() => {
     const msToRemember = gameLevelData[gamemode].rememberTime[1] * 1000;
@@ -101,10 +63,10 @@ function LoginModal() {
         <h4 className="modal__title">Nickname</h4>
         <form className="modal__form" onSubmit={nicknameSubmit}>
           <input
-            className={`modal__input${isInputValid ? '' : ' modal__input_invalid'}`}
+            className={`modal__input${isValid ? '' : ' modal__input_invalid'}`}
             placeholder="Enter your nickname"
-            onChange={setNickname}
             value={inputValue}
+            onChange={({ target }) => setInputValue(target.value)}
             spellCheck="false"
           />
           <div className="modal__button-wrapper">
@@ -116,7 +78,7 @@ function LoginModal() {
             <Button variant="primary" type="submit">Continue</Button>
           </div>
         </form>
-        {!isInputValid && <div className="modal__container modal__container_absolute"><p>{tipText}</p></div>}
+        {!isValid && <div className="modal__container modal__container_absolute"><p>{tip}</p></div>}
       </div>
     </div>
   );
