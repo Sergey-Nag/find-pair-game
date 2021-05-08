@@ -26,7 +26,7 @@ function Loader() {
 
   useEffect(() => {
     if (isPlaying) {
-      const fullTime = getMillisecondsFromGameTime(2, 20);
+      const fullTime = getMillisecondsFromGameTime(...gameLevelData[gameMode].time);
       setPercent(100 / (fullTime / time));
     } else if (isRememberTime) {
       const fullTime = getMillisecondsFromGameTime(...gameLevelData[gameMode].rememberTime);
