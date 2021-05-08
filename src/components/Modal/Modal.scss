@@ -31,11 +31,11 @@
 
     &_absolute {
       position: absolute;
-      right: -240px;
-      max-width: 220px;
+      left: 110%;
+      min-width: 220px;
       top: 0;
       z-index: 3;
-      padding-left: 45px;
+      padding-left: 40px;
 
       &::before {
         content: '!';
@@ -45,7 +45,7 @@
         height: 16px;
         margin-right: 5px;
         text-align: center;
-        top: 20px;
+        top: 18px;
         left: 15px;
         font-size: .9em;
         font-weight: bolder;
