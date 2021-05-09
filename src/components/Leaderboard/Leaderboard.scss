@@ -1,5 +1,6 @@
 @import '/src/assets/scss/variables';
 @import '/src/assets/scss/mixins';
+@import '/src/assets/scss/media';
 
 .leaderboard {
   width: 100%;
@@ -15,7 +16,7 @@
         content: counter(place);
       }
     }
-    
+
     &_player {
       padding: 5px 0;
       font-weight: bold;
@@ -58,6 +59,9 @@
 
     &_top-players {
       height: 25vh;
+      @include breakpoint(mobile400) {
+        height: 15vh;
+      }
 
       .leaderboard__row:nth-child(1) {
         background: $color_gold;
@@ -69,7 +73,7 @@
         background: $color_bronze;
       }
     }
-        
+
     &::-webkit-scrollbar {
       width: 5px;
     }
@@ -83,7 +87,7 @@
     &::-webkit-scrollbar-thumb {
       background: rgba(136, 136, 136, 0);
       border-radius: 4px;
-      
+
       &:hover {
         background: rgba(136, 136, 136, 0.9);
       }
