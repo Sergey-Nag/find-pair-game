@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/find-pair-game/static/css/main.c54c073d.chunk.css",
+    "main.css": "/find-pair-game/static/css/main.4c6db19a.chunk.css",
     "main.js": "/find-pair-game/static/js/main.81daaa1d.chunk.js",
     "main.js.map": "/find-pair-game/static/js/main.81daaa1d.chunk.js.map",
     "runtime-main.js": "/find-pair-game/static/js/runtime-main.51db2732.js",
@@ -8,7 +8,7 @@
     "static/js/2.ddc12d0b.chunk.js": "/find-pair-game/static/js/2.ddc12d0b.chunk.js",
     "static/js/2.ddc12d0b.chunk.js.map": "/find-pair-game/static/js/2.ddc12d0b.chunk.js.map",
     "index.html": "/find-pair-game/index.html",
-    "static/css/main.c54c073d.chunk.css.map": "/find-pair-game/static/css/main.c54c073d.chunk.css.map",
+    "static/css/main.4c6db19a.chunk.css.map": "/find-pair-game/static/css/main.4c6db19a.chunk.css.map",
     "static/js/2.ddc12d0b.chunk.js.LICENSE.txt": "/find-pair-game/static/js/2.ddc12d0b.chunk.js.LICENSE.txt",
     "static/media/acer.97b43230.svg": "/find-pair-game/static/media/acer.97b43230.svg",
     "static/media/android.5cea2350.svg": "/find-pair-game/static/media/android.5cea2350.svg",
@@ -30,7 +30,7 @@
   "entrypoints": [
     "static/js/runtime-main.51db2732.js",
     "static/js/2.ddc12d0b.chunk.js",
-    "static/css/main.c54c073d.chunk.css",
+    "static/css/main.4c6db19a.chunk.css",
     "static/js/main.81daaa1d.chunk.js"
   ]
 }
