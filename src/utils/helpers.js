@@ -19,7 +19,7 @@ const isPlayerPositionOnEndOfBlock = (playerBlock, containerheight) => {
 
 const createNicknameValid = (value) => ({
   isCorrectlength: () => value.length > 2 && value.length < 20,
-  isCorrectSymbol: () => !/(')|(")|(`)|(\/)|(\\)|(:)|(;)|(~)|({)|(})|(\()|(\))|(\[)|(\])|(\|)|(,)|(\*)/g.test(value),
+  isCorrectSymbol: () => /^[a-zA-Z0-9-._]*$/g.test(value),
   isNotEmpty: () => value.trim() !== '',
 });
 
