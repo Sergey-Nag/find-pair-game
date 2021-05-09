@@ -1,5 +1,6 @@
 @import '../../assets/scss/mixins';
 @import '../../assets/scss/variables';
+@import '/src/assets/scss/media';
 
 .gamelevel {
   @extend %flex;
@@ -8,8 +9,8 @@
 
   &__image {
     width: 100%;
-    opacity: .5;
-    
+    opacity: 0.5;
+
     &_active {
       opacity: 1;
     }
@@ -23,7 +24,7 @@
         top: $gamelevel_card_info_padding - 3px;
         right: $gamelevel_card_info_padding;
         left: $gamelevel_card_info_padding;
-      };
+      }
     }
   }
 
