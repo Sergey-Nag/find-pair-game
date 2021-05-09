@@ -1,3 +1,5 @@
+@import '../../assets/scss/media';
+
 .button {
   cursor: pointer;
   border-radius: 5px;
@@ -72,23 +74,27 @@
       box-shadow: 0px 2px 0px #4fb7ce;
       background-color: darken($color: #70e5ff, $amount: 20);
     }
+
+    @include breakpoint(tablet) {
+      min-width: 100%;
+    }
   }
 
-  &__box{
+  &__box {
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
-  &__checkbox{
+  &__checkbox {
     width: 14px;
     height: 14px;
-    border: 2px solid #FFFFFF;
+    border: 2px solid #ffffff;
     box-sizing: border-box;
     border-radius: 2px;
     margin-right: 8px;
     position: relative;
-    &.active::before{
+    &.active::before {
       content: '';
       border-radius: 2px;
       transform: rotate(45deg);
@@ -100,7 +106,7 @@
       background-color: #fff;
     }
 
-    &.active::after{
+    &.active::after {
       content: '';
       border-radius: 2px;
       transform: rotate(-45deg);
