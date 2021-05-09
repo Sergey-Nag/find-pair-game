@@ -3,13 +3,16 @@ import './GameLevelCard.scss';
 
 import gameLevelData from '../../utils/gameLevelData';
 import Button from '../Button';
+import { formatGameTime } from '../../utils/helpers';
 
 function GameLevelCard({ level, active, onActive }) {
   const [cardData, setCardData] = useState({});
+  const [time, setTime] = useState('');
 
   useEffect(() => {
     setCardData({ ...gameLevelData[level] });
-  }, [level, setCardData]);
+    setTime(cardData.time ? formatGameTime(...cardData.time) : '');
+  }, [level, cardData.time, setCardData]);
 
   return (
     <div className="gamelevel">
@@ -23,7 +26,7 @@ function GameLevelCard({ level, active, onActive }) {
       <div className="gamelevel__info_wrapp">
         <h3 className="gamelevel__info">
           <span className="gamelevel__name">{level}</span>
-          <span className="gamelevel__time">{cardData.time}</span>
+          <span className="gamelevel__time">{time}</span>
         </h3>
       </div>
       <div className="gamelevel__button_wrapp">

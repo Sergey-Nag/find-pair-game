@@ -1,43 +1,54 @@
 @import '../../assets/scss/variables';
+@import '../../assets/scss/media';
 
-.homepage{
-    height: 100vh;
-    max-width: 730px;
-    height: 100vh;
-    margin: 0 auto;
-    padding: 0 10px;
+.homepage {
+  height: 100vh;
+  max-width: 730px;
+  margin: 0 auto;
+  padding: 0 10px;
+  display: grid;
+  justify-items: center;
+  gap: 15px;
+  &__leaderboard-wrapper {
+    padding: 30px 60px 30px;
+    background: $wrapper_background;
+    box-shadow: 0px 9px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 0px 0px 50px 50px;
+  }
+  &__title {
+    margin-bottom: 20px;
+    font-weight: 900;
+    font-size: 48px;
+    line-height: 56px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #000000;
+    @include breakpoint(tablet) {
+      font-size: 35px;
+    }
+  }
+  &__level-wrapper {
     display: grid;
-    gap: 15px;
-    &__leaderboard-wrapper{
-        padding: 30px 60px 30px;
-        background: $wrapper_background;
-        box-shadow: 0px 9px 0px rgba(0, 0, 0, 0.25);
-        border-radius: 0px 0px 50px 50px;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 50px;
+    justify-items: center;
+    @include breakpoint(tablet) {
+      grid-template-columns: 1fr;
     }
-    &__title{
-        margin-bottom: 20px;
-        font-weight: 900;
-        font-size: 48px;
-        line-height: 56px;
-        text-align: center;
-        text-transform: uppercase;
-        color: #000000;
+  }
+  &__subtitle {
+    color: #6d6d6d;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+    letter-spacing: $letter_spacing;
+    align-self: center;
+  }
+  &__button-wrapper {
+    justify-self: center;
+    @include breakpoint(tablet) {
+      width: 80%;
     }
-    &__level-wrapper{
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        justify-items: center;
-    }
-    &__subtitle{
-        color: #6D6D6D;
-        font-weight: 700;
-        font-size: 24px;
-        line-height: 28px;
-        text-align: center;
-        letter-spacing: $letter_spacing;
-        align-self: center;
-    }
-    &__button-wrapper{
-        justify-self: center;
-    }
+  }
 }
