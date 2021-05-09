@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/find-pair-game/static/css/main.a7f10836.chunk.css",
-    "main.js": "/find-pair-game/static/js/main.c6470201.chunk.js",
-    "main.js.map": "/find-pair-game/static/js/main.c6470201.chunk.js.map",
+    "main.css": "/find-pair-game/static/css/main.c54c073d.chunk.css",
+    "main.js": "/find-pair-game/static/js/main.81daaa1d.chunk.js",
+    "main.js.map": "/find-pair-game/static/js/main.81daaa1d.chunk.js.map",
     "runtime-main.js": "/find-pair-game/static/js/runtime-main.51db2732.js",
     "runtime-main.js.map": "/find-pair-game/static/js/runtime-main.51db2732.js.map",
-    "static/js/2.c0248772.chunk.js": "/find-pair-game/static/js/2.c0248772.chunk.js",
-    "static/js/2.c0248772.chunk.js.map": "/find-pair-game/static/js/2.c0248772.chunk.js.map",
+    "static/js/2.ddc12d0b.chunk.js": "/find-pair-game/static/js/2.ddc12d0b.chunk.js",
+    "static/js/2.ddc12d0b.chunk.js.map": "/find-pair-game/static/js/2.ddc12d0b.chunk.js.map",
     "index.html": "/find-pair-game/index.html",
-    "static/css/main.a7f10836.chunk.css.map": "/find-pair-game/static/css/main.a7f10836.chunk.css.map",
-    "static/js/2.c0248772.chunk.js.LICENSE.txt": "/find-pair-game/static/js/2.c0248772.chunk.js.LICENSE.txt",
+    "static/css/main.c54c073d.chunk.css.map": "/find-pair-game/static/css/main.c54c073d.chunk.css.map",
+    "static/js/2.ddc12d0b.chunk.js.LICENSE.txt": "/find-pair-game/static/js/2.ddc12d0b.chunk.js.LICENSE.txt",
     "static/media/acer.97b43230.svg": "/find-pair-game/static/media/acer.97b43230.svg",
     "static/media/android.5cea2350.svg": "/find-pair-game/static/media/android.5cea2350.svg",
     "static/media/apple.e8c87215.svg": "/find-pair-game/static/media/apple.e8c87215.svg",
@@ -29,8 +29,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.51db2732.js",
-    "static/js/2.c0248772.chunk.js",
-    "static/css/main.a7f10836.chunk.css",
-    "static/js/main.c6470201.chunk.js"
+    "static/js/2.ddc12d0b.chunk.js",
+    "static/css/main.c54c073d.chunk.css",
+    "static/js/main.81daaa1d.chunk.js"
   ]
 }
